@@ -19,3 +19,5 @@ biankavirag@gmail.com Ihász Bianka
 kunviktor58@gmail.com Kun Viktor
 
 nemeth.daniel@ga.sze.hu Németh Dániel
+
+nagypeterpal@gmail.com  Nagy Péter
