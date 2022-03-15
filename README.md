@@ -24,7 +24,7 @@ nemeth.daniel@ga.sze.hu Németh Dániel
 
 nagypeterpal@gmail.com  Nagy Péter
 
-## Hansznos linkek
+## Hasznos linkek
 egy hasonló projekt:
 
 https://colab.research.google.com/github/sandeep0412/EthereumTokenClassification/blob/master/TokenClassification.ipynb
