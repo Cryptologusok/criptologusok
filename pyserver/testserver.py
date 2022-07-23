@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", content="This is test date passed to htmls", words=["This ", "is ", "how ", "you ", "pass ", "an ", "array."])  
+    alma="This is test data passed to htmls"
+    return render_template("index.html", content=alma, words=["This ", "is ", "how ", "you ", "pass ", "an ", "array."])  
 
 @app.route("/trap")
 def trap():
@@ -15,4 +16,4 @@ def treasure():
     return redirect(url_for("trap"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
