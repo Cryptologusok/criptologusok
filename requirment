@@ -3,5 +3,5 @@ futtatáshoz:
 python 3
 telepítés: https://www.python.org/ftp/python/3.10.5/python-3.10.5-amd64.exe
 
-http.server
-telepítés: terminálba: pip install httpserver
+flask
+telepítés: terminálba: pip install flask

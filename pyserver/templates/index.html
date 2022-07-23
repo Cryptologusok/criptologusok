@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Teszt oldal</title>
+    </head>
+    <body>
+        <h1 style="text-align:center">Welcome to my site</h1>
+        <h3 style="text-align:center">{{content}}</h3>
+        <h4 style="text-align:center"> {% for word in words %}
+                                            {% if word == "array." %}
+                                                <u><b>{{word}}</b></u>
+                                            {% else %}
+                                                {{word}}
+                                            {% endif %}
+                                       {% endfor %}
+        </h6>
+    </body>
+
+</html>
