@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, url_for
-from services.test import getTestString
+import services.test as testfile
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ def index():
 
 @app.route("/test")
 def test():
-    alma=getTestString()
+    alma= testfile.getTestString()
     return render_template("background/background.html", main="index/index.html",content=alma, words=["This ", "is ", "how ", "you ", "pass ", "an ", "array."])
 
 @app.route("/other")
