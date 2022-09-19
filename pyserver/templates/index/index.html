@@ -1,10 +1,9 @@
-<h1 style="text-align:center">Welcome to my site</h1>
-<h3 style="text-align:center">{{content}}</h3>
-<h4 style="text-align:center"> {% for word in words %}
-    {% if word == "array." %}
-    <u><b>{{word}}</b></u>
-    {% else %}
-    {{word}}
-    {% endif %}
-    {% endfor %}
-</h6>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<div id="wrapper">
+    <div id="chart-line2"></div>
+    <div id="chart-line"></div>
+</div>
+<button onclick="createChart()">Create chart</button>
+<script src="{{url_for('static', filename='scripts/index.js')}}"></script>
+    
+

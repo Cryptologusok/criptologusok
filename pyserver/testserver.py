@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, url_for
 import services.test as testfile
 
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -20,4 +21,4 @@ def other():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost",port=42069,debug=True)
+    app.run(host="localhost",port=80,debug=True)
