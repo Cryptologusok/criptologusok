@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--link href="style.css" rel="stylesheet" /-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cryptologusok</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <style>
+        /* basic setting */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*color: #444;*/
+            font-family: 'Inter' sans-serif;
+
+            /*border-top: 10px solid #1098ad;*/
+            /*position: relative;*/
+        }
+
+        /* colors */
+        .container1 {
+            background-color: #ddd;
+        }
+
+        .container2 {
+            background-color: darkseagreen;
+        }
+
+        .main--link{
+            background-color: cyan;
+        }
+
+        .links {
+            background-color: lightgreen;
+        }
+
+        .logo {
+            background-color: white;
+        }
+
+        /* layout */
+
+        .container1 {
+            display: flex;
+            align-items: stretch ; /* flex-start, flex-end, center, stretch */
+            justify-content: space-between ; /* space-between, center */
+        }
+
+        .f1 {
+            flex: 0 1 auto; 
+        }
+
+        .main--link {
+            align-self: center;
+        }
+
+        .links {
+            align-self: center;
+        }
+
+        .logo {
+            align-self: center;
+        }
+
+        .container2 {
+            display: flex;
+            align-items: center ; /* flex-start, flex-end, center, stretch */
+            justify-content: space-between ; /* space-between, center */
+        }
+
+        /*.f2 {
+            flex: 0 0 50%; 
+        }
+        */
+
+        .filters {
+            align-self: stretch;
+            flex-basis: 50% ;
+            gap: 25px;
+            border: 2px dotted black;
+        }
+
+        .results {
+            align-self: stretch;
+            flex-basis: 50% ;
+            border: 2px dotted black
+        }
+
+        .graph {
+            border-top: 2px dotted black;
+            border-bottom: 2px dotted black;
+            height: 300px;
+
+        }
+
+        .figures {
+            border: 0px;
+            height: 100px;
+        }
+
+        .title {
+            margin: 0 auto;
+            margin-left: 50%;
+            margin-bottom: 10%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <nav class="f1 main--link">
+            <a href="#">Main Page</a>
+        </nav>
+        <nav class="f1 links">
+            <a href="#">Blog</a>
+            <a href="#">Credits</a>
+            <a href="#">BlackHat</a>
+        </nav>
+        <img
+            class="f1 logo"
+            src="img/unreal.png"
+            width="50"
+            height="50"
+        />
+    </div>
+    <div class="container2">
+        <div class="f2 filters">
+            <p class="title">Filters</p>
+            <label for="filter StartDate">Start date:</label>
+            <input 
+                type="date" 
+                id="filter StartDate" 
+                name="trip-start"
+                value="2010-01-01"
+                min="2010-01-01" max="2022-09-30">
+            </br>
+            <label for="filter EndDate">End date:</label>
+            <input 
+                type="date" 
+                id="filter EndDate" 
+                name="trip-end"
+                value="2022-09-30"
+                min="2010-01-01" max="2022-09-30">
+            </br>
+            <label for="filter Abc">A,B,C:</label>
+            <select id="filter Abc">Abc
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+            </select>
+            </br>
+            <label for="filter Efg">E,F,G:</label>
+            <select id="filter Efg">efg
+                <option value="e">e</option>
+                <option value="f">f</option>
+                <option value="g">g</option>
+            </select>
+            </br>
+        </br>
+        <input type="submit" value="Send">
+        </div>
+        <div class="f2 results">
+            <p class="title">Results</p>
+            <div class="results graph">Graph
+            </div>
+            <div class="results figures">Figures
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Author: Cryptologusok SZE Team</p>
+        <p><a href="mailto:nemvagyok@itt.com">nemvagyok@itt.com</a></p>
+    </footer> 
+</body>
+</html>
