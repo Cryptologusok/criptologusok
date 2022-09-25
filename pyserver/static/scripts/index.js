@@ -1,13 +1,13 @@
 //declare global variables
 
 let xaxis = "ft_s"
-let yaxis = ["time","asd"];
+let yaxis = ["time","block"];
 let startDate = new Date('2014/05/13');
 let endDate = new Date('2022/09/15');
 let chart;
 let chartLine;
 let chartData;
-let createChartData = [[43,[25,42]],[44,[44,75]]];
+let createChartData;
 
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
@@ -45,7 +45,7 @@ var options = {
   chart: {
   id: 'chart2',
   type: 'line',
-  height: 230,
+  height: 400,
   toolbar: {
     autoSelected: 'pan',
     show: false
@@ -63,12 +63,6 @@ fill: {
 markers: {
   size: 0
 },
-grid: {
-  row: {
-    colors: ['#ffffff', '#f0f0f0'], // takes an array which will be repeated on columns
-    opacity: 0.5
-  },
-},
 xaxis: {
   data: chartData[0],
   type: 'number'
@@ -79,12 +73,10 @@ chart = new ApexCharts(document.querySelector("#chart-line2"), options);
 chart.render();
 
 var optionsLine = {
-  series: [{
-  data: createChartData
-}],
+  series: createChartData,
   chart: {
   id: 'chart1',
-  height: 130,
+  height: 300,
   type: 'area',
   brush:{
     target: 'chart2',
@@ -94,11 +86,10 @@ var optionsLine = {
     enabled: true,
     xaxis: {
       min: chartData[0][0],
-      max: chartData[99][0]
+      max: chartData[0][99]
     }
   },
 },
-colors: ['#008FFB'],
 fill: {
   type: 'gradient',
   gradient: {
@@ -107,9 +98,9 @@ fill: {
   }
 },
 xaxis: {
-  type: 'datetime',
+  type: 'number',
   tooltip: {
-    enabled: false
+    enabled: true
   }
 },
 yaxis: {
