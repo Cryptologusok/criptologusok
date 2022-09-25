@@ -1,43 +1,47 @@
-function createChart(){      // Replace Math.random() with a pseudo-random number generator to get reproducible results in e2e tests
-      // Based on https://gist.github.com/blixt/f17b47c62508be59987b
-      var _seed = 42;
-      Math.random = function() {
-        _seed = _seed * 16807 % 2147483647;
-        return (_seed - 1) / 2147483646;
-      };
+//declare global variables
 
-/*
-    // this function will generate output in this format
-    // data = [
-        [timestamp, 23],
-        [timestamp, 33],
-        [timestamp, 12]
-        ...
-    ]
-  */
-    function generateDayWiseTimeSeries(baseval, count, yrange) {
-      var i = 0;
-      var series = [];
-      while (i < count) {
-        var x = baseval;
-        var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-    
-        series.push([x, y]);
-        baseval += 86400000;
-        i++;
-      }
-      return series;
+let xaxis = "ft_s"
+let yaxis = ["time","asd"];
+let startDate = new Date('2014/05/13');
+let endDate = new Date('2022/09/15');
+let chart;
+let chartLine;
+let chartData;
+let createChartData = [[43,[25,42]],[44,[44,75]]];
+
+function getData(){
+  document.getElementById("data").innerHTML  = "Start getting data";  
+  let url = "/testGet/"+startDate.toLocaleDateString()+"&"+endDate.toLocaleDateString()+"&"+xaxis+"&"+JSON.stringify(yaxis);
+  fetch(url).then((data) => {return data.json()})
+  .then((data) => processData(data));
+}
+
+function processData(data){
+  chartData = data;
+  document.getElementById("data").innerHTML = JSON.stringify(data);
+  createChartData=[];
+
+  for(let i=1 ; i<data.length;i++){
+    tmpdata=[];
+    for(let j=0; j<100;j++){
+      tmpdata[j] = {x:data[0][j],y:data[i][j]}
     }
-    
-    var data = generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 185, {
-      min: 30,
-      max: 90
-    })
-        
+    createChartData[i-1] = {name:yaxis[i-1],data:tmpdata};
+  }
+  createChart();
+}
+
+function createChart(){
+  if(chart){
+  chart.destroy();
+}
+  if(chartLine){  
+  chartLine.destroy();
+  }
 var options = {
-  series: [{
-  data: data
-}],
+  series: 
+    createChartData
+  ,
   chart: {
   id: 'chart2',
   type: 'line',
@@ -47,7 +51,6 @@ var options = {
     show: false
   }
 },
-colors: ['#546E7A'],
 stroke: {
   width: 3
 },
@@ -60,17 +63,24 @@ fill: {
 markers: {
   size: 0
 },
+grid: {
+  row: {
+    colors: ['#ffffff', '#f0f0f0'], // takes an array which will be repeated on columns
+    opacity: 0.5
+  },
+},
 xaxis: {
-  type: 'datetime'
+  data: chartData[0],
+  type: 'number'
 }
 };
 
-var chart = new ApexCharts(document.querySelector("#chart-line2"), options);
+chart = new ApexCharts(document.querySelector("#chart-line2"), options);
 chart.render();
 
 var optionsLine = {
   series: [{
-  data: data
+  data: createChartData
 }],
   chart: {
   id: 'chart1',
@@ -83,8 +93,8 @@ var optionsLine = {
   selection: {
     enabled: true,
     xaxis: {
-      min: new Date('19 Jun 2017').getTime(),
-      max: new Date('14 Aug 2017').getTime()
+      min: chartData[0][0],
+      max: chartData[99][0]
     }
   },
 },
@@ -107,6 +117,8 @@ yaxis: {
 }
 };
 
-var chartLine = new ApexCharts(document.querySelector("#chart-line"), optionsLine);
+chartLine = new ApexCharts(document.querySelector("#chart-line"), optionsLine);
 chartLine.render();
 }
+
+getData();

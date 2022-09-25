@@ -1,5 +1,8 @@
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, render_template 
 import services.test as testfile
+import json
+from services.bi import dummy_getChart
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -18,6 +21,15 @@ def test():
 @app.route("/other")
 def other():
     return render_template("background/background.html", main="another/another.html")
+
+@app.route("/testGet/<startDate>&<endDate>&<xaxis>&<yaxis>")
+def testGet(startDate,endDate,xaxis,yaxis):
+    yaxis = yaxis[1:-1].split(',') # convert datas
+    for item in range(len(yaxis)):
+        yaxis[item] = yaxis[item].strip("\"")
+    startDate = datetime.strptime(startDate,"%Y. %m. %d.").date()
+    endDate = datetime.strptime(endDate,"%Y. %m. %d.").date()
+    return dummy_getChart(startDate,endDate,xaxis,yaxis)
 
 
 if __name__ == "__main__":
