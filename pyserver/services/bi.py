@@ -8,8 +8,11 @@ def dummy_getChart(startDate,endDate,xaxis,yaxis):
         chartData[0].append((index+1)*10)
     for index in range(len(yaxis)):
         chartData.append([])
+        number = 1 
         for inner in range(100):
-            chartData[index+1].append(random.randint(0,1000))
+            number += 10*random.randint(1,10)
+            number -= 10*random.randint(1,10)           
+            chartData[index+1].append(number)
 
     
     print(chartData)
