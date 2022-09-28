@@ -1,0 +1,83 @@
+.head{
+    height:95px;
+    width:100%;
+}
+
+.head .heading{
+    margin:0;
+    color:#fff;
+    font-family:arial;
+    font-size: 30px;
+    font-weight: 800;
+    text-decoration: underline;
+    text-align:center;
+}
+
+.head .navigation {
+    font-family:times new roman;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top:10px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.head .navigation i{
+    height: 30px;
+    width: 50px;
+    text-align:center;
+    font-size:30px;
+    color:#fff;
+    border-radius:10px;
+}
+
+.head .navigation .inner_box {
+    display:flex;
+    justify-content: space-around;
+}
+
+.head .navigation .button{
+    height:30px;
+    width:50px;
+}
+
+.head .navigation .tooltip{
+    visibility:hidden;
+    position:absolute;
+    top:95px;
+    margin-left:-20px;
+    text-align:center;
+    border-radius: 6px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background:#fff;
+    color:#000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.head .navigation #sze_logo {
+    height:30px;
+    width:50px;
+    border-radius:10px;
+    filter:invert(100%)
+}
+
+.head .navigation .button:hover i{
+    color:#000;
+    background:#fff;
+    transition: all 0.4s ease;
+}
+
+.head .navigation .button:hover .tooltip{
+    visibility:visible;
+    margin-left:-40px;
+    transition: all 0.4s ease;
+}
+
+.head .navigation .button:hover #sze_logo{
+    filter:none;
+    background: #fff;
+    transition: all 0.4s ease;
+}

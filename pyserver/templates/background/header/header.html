@@ -1,1 +1,36 @@
-header works test
+<head xmlns="http://www.w3.org/1999/html">
+	<link href="{{url_for('static', filename='styles/header.css')}}" rel="stylesheet" type="text/css">
+	<!-- Boxicons CDN Link-->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<header class="head">
+		<h1 class="heading">Cryptológusok</h1>
+		<nav class="navigation" >
+			<div class="button">
+				<a href="#">
+					<i class='bx bx-home-alt-2'></i>
+				</a>
+				<span class="tooltip">Home</span>
+			</div>
+			<div class="inner_box">
+				<div class="button">
+					<a href="#"><i class='bx bxl-graphql'></i></a><span class="tooltip">Graf</span>
+				</div>
+				<div class="button">
+					<a href="#"><i class='bx bx-user' ></i></a><span class="tooltip">Impressum</span>
+				</div>
+				<div class="button">
+					<a href="#"><i class='bx bxs-color' ></i></a><span class="tooltip">Night mode</span>
+				</div>
+			</div>
+			<div class="button">
+				<a href="https://www.uni.sze.hu/">
+					<img id="sze_logo" src="{{url_for('static', filename='img/sze_logo.svg')}}" alt="sze logo"/>
+				</a>
+				<span class="tooltip">Sze</span>
+			</div>
+		</nav>
+	</header>
+</body>
