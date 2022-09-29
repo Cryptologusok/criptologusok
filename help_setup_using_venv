@@ -1,0 +1,33 @@
+# how to set up current version using virtual environment
+# based on https://code.visualstudio.com/docs/python/tutorial-flask
+
+$ cd /home/lefodor/projects/cryptologusok/
+$ git clone https://github.com/Cryptologusok/criptologusok.git
+$ cd criptologusok
+$ python3 -m venv .venv # create virtual environment folder
+$ source .venv/bin/activate # if already exist, just activate
+$ python -m pip install --upgrade pip # upgrade before install
+$ python -m pip install flask # install flask in .venv
+# press CTRL+SHIFT+P - Python Select Interpreter --> choose .venv
+# select Run --> Add Configuration --> Python --> Flask
+
+	launch.json
+		....
+		"configuration":
+			"env": {
+				"FLASK_APP": "pyserver.testserver",
+		....
+# save launch.json
+$ export set FLASK_APP=testserver
+$ cd pyserver
+$ python -m flask run -h 127.0.0.1 -p 5000 # to switch host and port
+
+# folder structure should look as follows (only required files/objects shown):
+CRIPTOLOGUSOK
+	.venv
+	.vscode
+		launch.json
+	pyserver
+		testserver.py
+		...
+	...
