@@ -22,6 +22,10 @@ def test():
 def other():
     return render_template("background/background.html", main="another/another.html")
 
+@app.route("/comments")
+def comment():
+    return render_template("background/background.html", main="comments/comments.html")    
+
 @app.route("/testGet/<startDate>&<endDate>&<xaxis>&<yaxis>")
 def testGet(startDate,endDate,xaxis,yaxis):
     yaxis = yaxis[1:-1].split(',') # convert datas

@@ -1,7 +1,7 @@
 import imp
 import random
 import json
-from de import getMinMax, getYaxisData
+from services.de import getMinMax, getYaxisData
 
 def dummy_getChart(startDate,endDate,xaxis,yaxis):
     chartData = [[]]
