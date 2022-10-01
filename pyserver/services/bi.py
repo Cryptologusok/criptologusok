@@ -1,7 +1,7 @@
 import imp
 import random
 import json
-from services.de import getMinMax, getYaxisData
+from services.de import getData
 
 def dummy_getChart(startDate,endDate,xaxis,yaxis):
     chartData = [[]]
@@ -22,10 +22,16 @@ def dummy_getChart(startDate,endDate,xaxis,yaxis):
     return json.dumps(chartData)
 
 def getChartData(startDate,endDate,xaxis,yaxis):
-    (min, max) = getMinMax(startDate,endDate,xaxis)
-    #adatfelosztás 100 részre
-    #[50,51,52,53,54..150] ebbe az esetbe
-    data = getYaxisData(startDate,endDate,xaxis,yaxis)
-    #lecsekkolod hogy az x melyik 100 kis részhez van legközelebb és az annak megfelelő indexbe berakod az y adatokat
-    #retunöölöd a készített cuccot
-    #[[x adatok 100 elem][y1 adatok 100 elem][y2..y adatok 100 elem]]
+    data = getData(startDate,endDate,xaxis,yaxis)
+    chartData = [[]]
+
+    for i in range(100):
+        chartData[0].append(data[1][i])
+
+    for i in range(len(yaxis)):
+        chartData.append([])
+
+        for j in range(100):
+            chartData[i+1] = data[i+2][j]
+
+    return json.dumps(chartData)

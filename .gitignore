@@ -1,2 +1,3 @@
 pyserver/services/__pycache__/*
 pyserver/services/input_single_json.parquet
+.vs/*
