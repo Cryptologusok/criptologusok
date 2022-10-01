@@ -1,13 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<div id="wrapper">
-    <div id="chart-line2"></div>
-    <div id="chart-line"></div>
+<div class="container">
+    {% include 'index/sidebar/sidebar.html'%}
+    {% include 'index/results/results.html'%}
 </div>
-<button onclick="createChart()">Create chart</button>
-
-<div id="data">not yet fetched</div>
-<button onclick="getData()">get data</button>
-
-<script src="{{url_for('static', filename='scripts/index.js')}}"></script>
-    
-
