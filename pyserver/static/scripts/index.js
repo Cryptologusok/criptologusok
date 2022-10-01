@@ -1,7 +1,7 @@
 //declare global variables
 
-let xaxis = "ft_s"
-let yaxis = ["time","block"];
+let xaxis = "bloc"
+let yaxis = ["cr_b","ft_s"];
 let startDate = new Date('2014/05/13');
 let endDate = new Date('2022/09/15');
 let chart;
@@ -18,7 +18,7 @@ function getData(){
 
 function processData(data){
   chartData = data;
-  document.getElementById("data").innerHTML = JSON.stringify(data);
+  document.getElementById("data").innerHTML = "Data succesfully gathered";
   createChartData=[];
 
   for(let i=1 ; i<data.length;i++){

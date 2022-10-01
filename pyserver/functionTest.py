@@ -1,6 +1,5 @@
-import services.testFile as bi
+import services.bi as bi
 import datetime
 
-asd = bi.randTest()
-print(asd)
-bi.getGraphData(asd[0],asd[1],"szoveg",asd[3])
+result = bi.getChartData("2009-07-05 11:04:35","2022-07-05 11:04:35","cr_b",["bloc","it_s"])
+print(result)

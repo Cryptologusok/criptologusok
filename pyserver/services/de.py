@@ -33,6 +33,3 @@ def getData(startDate,endDate,xaxis,yaxis):
   #result = con.execute(mainQuery).fetchall()
   result = con.execute(mainQuery).fetchall()
   return (result)
-
-result = getData("2009-07-05 11:04:35","2022-07-05 11:04:35","cr_b",["bloc","it_s"])
-print(result)

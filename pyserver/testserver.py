@@ -1,7 +1,7 @@
 from flask import Flask, render_template 
 import services.test as testfile
 import json
-from services.bi import dummy_getChart
+from services.bi import getChartData
 from datetime import datetime
 
 
@@ -31,9 +31,9 @@ def testGet(startDate,endDate,xaxis,yaxis):
     yaxis = yaxis[1:-1].split(',') # convert datas
     for item in range(len(yaxis)):
         yaxis[item] = yaxis[item].strip("\"")
-    startDate = datetime.strptime(startDate,"%Y. %m. %d.").date()
-    endDate = datetime.strptime(endDate,"%Y. %m. %d.").date()
-    return dummy_getChart(startDate,endDate,xaxis,yaxis)
+    startDate = datetime.strptime(startDate,"%Y. %m. %d.")
+    endDate = datetime.strptime(endDate,"%Y. %m. %d.")
+    return getChartData(startDate,endDate,xaxis,yaxis)
 
 
 if __name__ == "__main__":

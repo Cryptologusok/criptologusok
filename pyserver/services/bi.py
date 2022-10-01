@@ -2,6 +2,7 @@ import imp
 import random
 import json
 from services.de import getData
+import datetime
 
 def dummy_getChart(startDate,endDate,xaxis,yaxis):
     chartData = [[]]
@@ -22,16 +23,16 @@ def dummy_getChart(startDate,endDate,xaxis,yaxis):
     return json.dumps(chartData)
 
 def getChartData(startDate,endDate,xaxis,yaxis):
-    data = getData(startDate,endDate,xaxis,yaxis)
+    data = getData( startDate.strftime("%Y-%m-%d %H:%m:%S"),endDate.strftime("%Y-%m-%d %H:%m:%S"),xaxis,yaxis)
     chartData = [[]]
 
     for i in range(100):
-        chartData[0].append(data[1][i])
+        chartData[0].append(data[i][1])
 
     for i in range(len(yaxis)):
         chartData.append([])
 
         for j in range(100):
-            chartData[i+1] = data[i+2][j]
+            chartData[i+1].append(data[j][i+2])
 
     return json.dumps(chartData)
