@@ -22,24 +22,31 @@
     justify-content: space-between;
 }
 
-.head .navigation i{
-    height: 30px;
-    width: 50px;
-    text-align:center;
-    font-size:30px;
-    color:#fff;
-    border-radius:10px;
+.head .navigation .button{
+    height:30px;
+    width:50px;
 }
 
 .head .navigation .inner_box {
     display:flex;
     justify-content: space-around;
 }
-
-.head .navigation .button{
+.head .navigation .inner_box div{
+    margin-left:10px;
+    margin-right:10px;
+}
+/*.head .navigation .button .logo{
     height:30px;
     width:50px;
+    border-radius:10px;
+    filter:invert(100%);
 }
+
+.head .navigation .button:hover .logo{
+    filter:none;
+    background: #fff;
+    transition: all 0.4s ease;
+}*/
 
 .head .navigation .tooltip{
     visibility:hidden;
@@ -57,26 +64,20 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
-.head .navigation #sze_logo {
-    height:30px;
-    width:50px;
-    border-radius:10px;
-    filter:invert(100%)
-}
-
-.head .navigation .button:hover i{
-    color:#000;
-    background:#fff;
-    transition: all 0.4s ease;
-}
-
 .head .navigation .button:hover .tooltip{
     visibility:visible;
     margin-left:-40px;
     transition: all 0.4s ease;
 }
 
-.head .navigation .button:hover #sze_logo{
+.head .navigation img {
+    height:30px;
+    width:50px;
+    border-radius:10px;
+    filter:invert(100%);
+}
+
+.head .navigation .button:hover img{
     filter:none;
     background: #fff;
     transition: all 0.4s ease;
