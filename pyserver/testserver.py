@@ -22,6 +22,9 @@ def test():
 def other():
     return render_template("background/background.html", main="another/another.html")
 
+@app.route("/impressum")
+def impressum():
+    return render_template("background/background.html", main="another/Impressum.html")
 @app.route("/comments")
 def comment():
     return render_template("background/background.html", main="comments/comments.html")    
