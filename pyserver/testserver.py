@@ -25,9 +25,14 @@ def other():
 @app.route("/impressum")
 def impressum():
     return render_template("background/background.html", main="another/Impressum.html")
+
 @app.route("/comments")
 def comment():
-    return render_template("background/background.html", main="comments/comments.html")    
+    comments = [["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],
+["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]]]
+
+    comments = json.dumps(comments)
+    return render_template("background/background.html", main="comments/comments.html", yeay=comments)    
 
 @app.route("/testGet/<startDate>&<endDate>&<xaxis>&<yaxis>")
 def testGet(startDate,endDate,xaxis,yaxis):

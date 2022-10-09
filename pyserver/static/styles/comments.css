@@ -1,4 +1,47 @@
-.test{
+.title{
     font-size: xx-large;
     font-weight: bolder;
+    margin: unset;
+    margin-bottom: 10px;
+}
+
+.description{
+    width: 70%;
+    outline: solid 1px pink;
+    display: inline;
+    text-align: left;
+    overflow-y: auto;
+}
+
+.variables{
+    width: 30%;
+    outline: solid 1px pink;
+    display: inline;
+    text-align: left;
+}
+
+.variable{
+    padding-bottom: 5px;
+    margin-left:10px ;
+    display: block;
+}
+
+.detail_container{
+    width: 100%;
+    max-height: 15vh;
+    display: flex;
+}
+
+.comment{
+    margin: 8vh 10vw;
+    width: 80vw;
+    outline: solid 1px pink;
+    text-align: center;
+}
+
+.main{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc( 100vh - 95px);
+    width: 100vw;
 }

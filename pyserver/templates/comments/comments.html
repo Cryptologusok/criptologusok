@@ -1,3 +1,12 @@
-<link href="{{url_for('static', filename='style/comments.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/comments.css')}}">
 
-<div class="test">asd</div>
+<div class="main">
+    <div id="comments"></div>
+</div>
+
+<script src="{{ url_for('static',filename='scripts/comments.js') }}"></script>
+
+<script>
+    let test = '{{yeay}}';
+    write_comments(test);
+</script>

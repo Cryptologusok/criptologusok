@@ -17,6 +17,19 @@
             padding: 0;
         }
 
+
+        ::-webkit-scrollbar{
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track{
+            background-color: rgb(220, 218, 228);
+        }
+        
+        ::-webkit-scrollbar-thumb{
+            background-color: #50225e;
+        }
+        
         body {
             /*color: #444;*/
             font-family: 'Inter', sans-serif;
