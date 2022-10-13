@@ -11,7 +11,9 @@ let createChartData;
 
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
-  let url = "/testGet/"+startDate.toLocaleDateString()+"&"+endDate.toLocaleDateString()+"&"+xaxis+"&"+JSON.stringify(yaxis);
+  start = formatDate(startDate);
+  end = formatDate(endDate);
+  let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
   fetch(url).then((data) => {return data.json()})
   .then((data) => processData(data));
 }
@@ -29,6 +31,20 @@ function processData(data){
     createChartData[i-1] = {name:yaxis[i-1],data:tmpdata};
   }
   createChart();
+}
+
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('.');
 }
 
 function createChart(){

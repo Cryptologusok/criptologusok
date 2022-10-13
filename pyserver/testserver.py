@@ -39,8 +39,8 @@ def testGet(startDate,endDate,xaxis,yaxis):
     yaxis = yaxis[1:-1].split(',') # convert datas
     for item in range(len(yaxis)):
         yaxis[item] = yaxis[item].strip("\"")
-    startDate = datetime.strptime(startDate,"%Y. %m. %d.")
-    endDate = datetime.strptime(endDate,"%Y. %m. %d.")
+    startDate = datetime.strptime(startDate,"%Y.%m.%d")
+    endDate = datetime.strptime(endDate,"%Y.%m.%d")
     return getChartData(startDate,endDate,xaxis,yaxis)
 
 
