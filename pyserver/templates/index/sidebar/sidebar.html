@@ -3,7 +3,7 @@
     <label for="filter StartDate">Start date:</label>
     <input 
         type="date" 
-        id="filter StartDate" 
+        class="filter StartDate" 
         name="trip-start"
         value="2010-01-01"
         min="2010-01-01" max="2022-09-30">
@@ -11,26 +11,25 @@
     <label for="filter EndDate">End date:</label>
     <input 
         type="date" 
-        id="filter EndDate" 
+        class="filter EndDate" 
         name="trip-end"
         value="2022-09-30"
         min="2010-01-01" max="2022-09-30">
     </br>
     <label for="filter Abc">A,B,C:</label>
-    <select id="filter Abc">Abc
+    <select class="filter Abc">Abc
         <option value="a">a</option>
         <option value="b">b</option>
         <option value="c">c</option>
     </select>
     </br>
     <label for="filter Efg">E,F,G:</label>
-    <select onclick="xaxis = choice" id="filter Efg">efg
+    <select onclick="xaxis = choice" class="filter Efg">efg
         <option value="e">e</option>
         <option value="f">f</option>
         <option value="g">g</option>
     </select>
     </br>
 </br>
-<input type="button" value="Send">
-<button onclick="getData()" >FUK</button>
+<input class="btn send" type="button" value="Send"/>
 </div>
