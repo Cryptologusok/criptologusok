@@ -1,6 +1,5 @@
 <head xmlns="http://www.w3.org/1999/html">
 	<link href="{{url_for('static', filename='styles/header.css')}}" rel="stylesheet" type="text/css">
-	<!-- Boxicons CDN Link-->
 
 	<meta charset="utf-8"/>
 </head>
@@ -10,33 +9,33 @@
 		<nav class="navigation" >
 			<div class="button">
 				<a href="/">
-					<img src="{{url_for('static', filename='img/home_logo.svg')}}" alt="home logo"/>
+					<img src="{{url_for('static', filename='img/header/home_logo.svg')}}" alt="home logo"/>
 				</a>
 				<span class="tooltip">Home</span>
 			</div>
 			<div class="inner_box">
 				<div class="button">
-					<a href="#">
-						<img src="{{url_for('static', filename='img/graph_logo.svg')}}" alt="graph logo"/>
+					<a href="https://github.com/Cryptologusok/criptologusok" target="_blank">
+						<img src="{{url_for('static', filename='img/header/code_icon.svg')}}" alt="user logo"/>
 					</a>
-					<span class="tooltip">Graph</span>
+					<span class="tooltip">Code</span>
 				</div>
 				<div class="button">
 					<a href="/impressum">
-						<img src="{{url_for('static', filename='img/user_logo.svg')}}" alt="user logo"/>
+						<img src="{{url_for('static', filename='img/header/user_logo.svg')}}" alt="user logo"/>
 					</a>
 					<span class="tooltip">Impressum</span>
 				</div>
 				<div class="button">
 					<a href="#">
-						<img src="{{url_for('static', filename='img/color_logo.svg')}}" alt="color logo"/>
+						<img src="{{url_for('static', filename='img/header/color_logo.svg')}}" alt="color logo"/>
 					</a>
 					<span class="tooltip">Night mode</span>
 				</div>
 			</div>
 			<div class="button">
-				<a href="https://www.uni.sze.hu/">
-					<img src="{{url_for('static', filename='img/sze_logo.svg')}}" alt="sze logo"/>
+				<a href="https://www.uni.sze.hu/" target="_blank">
+					<img src="{{url_for('static', filename='img/header/sze_logo.svg')}}" alt="sze logo"/>
 				</a>
 				<span class="tooltip">Sze</span>
 			</div>
