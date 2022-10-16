@@ -35,18 +35,6 @@
     margin-left:10px;
     margin-right:10px;
 }
-/*.head .navigation .button .logo{
-    height:30px;
-    width:50px;
-    border-radius:10px;
-    filter:invert(100%);
-}
-
-.head .navigation .button:hover .logo{
-    filter:none;
-    background: #fff;
-    transition: all 0.4s ease;
-}*/
 
 .head .navigation .tooltip{
     visibility:hidden;
