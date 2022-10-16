@@ -1,13 +1,12 @@
 //declare global variables
-
-let xaxis = "bloc"
-let yaxis = ["cr_b","ft_s"];
-let startDate = new Date('2014/05/13');
-let endDate = new Date('2022/09/15');
 let chart;
 let chartLine;
 let chartData;
 let createChartData;
+
+
+document.querySelector('.StartDate').value = formatDate(startDate);
+document.querySelector('.EndDate').value = formatDate(endDate);
 
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
@@ -44,7 +43,7 @@ function formatDate(date) {
   if (day.length < 2) 
       day = '0' + day;
 
-  return [year, month, day].join('.');
+  return [year, month, day].join('-');
 }
 
 function createChart(){
