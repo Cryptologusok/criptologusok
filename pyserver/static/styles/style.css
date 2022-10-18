@@ -75,6 +75,7 @@
             min-height:100%;
             min-width: 100%;
             display: flex;
+            flex-direction: row ;
             align-items: stretch ; /* flex-start, flex-end, center, stretch */
             justify-content: space-between ; /* space-between, center */
 
@@ -90,24 +91,24 @@
             align-self: stretch;
             border: 2px dotted black;
             flex: 0 0 80% ;
-            /*display: flex;*/
+            display: flex;
+            flex-direction: column ;
         }
 
         .results--graph {
             border-top: 2px dotted black;
             border-bottom: 2px dotted black;
-            /*height: 500px;*/
+            flex: 1 1 70% ;
         }
 
         .results--figures {
             border: 0px ;
-            height: 100px;
+            flex: 0 1 30% ;
         }
 
         .title {
             margin: 0 auto;
             margin-left: 50%;
-            /*margin-bottom: 10%;*/
         }
         /*
         .btn--links:link,
