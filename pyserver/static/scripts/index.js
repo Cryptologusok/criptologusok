@@ -138,9 +138,6 @@ document.querySelector('.send').addEventListener('click', function () {
   let _tmp_startDate = new Date(document.querySelector('.StartDate').value);
   let _tmp_endDate = new Date(document.querySelector('.EndDate').value);
 
-  console.log(_tmp_startDate.getTime());
-  console.log(_tmp_endDate.getTime());
-
   if(_tmp_startDate.getTime() > _tmp_endDate.getTime()) {
     displayMessage('Start date must be earlier than end date...') ;
   } else {

@@ -21,20 +21,25 @@
     display:flex;
     justify-content: space-between;
 }
-
+/*
 .head .navigation .button{
     height:30px;
     width:50px;
 }
+*/
 
 .head .navigation .inner_box {
+    align-self: center ;
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px ;
 }
+/*
 .head .navigation .inner_box div{
     margin-left:10px;
     margin-right:10px;
 }
+*/
 
 .head .navigation .tooltip{
     visibility:hidden;
