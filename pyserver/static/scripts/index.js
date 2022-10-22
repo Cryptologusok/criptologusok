@@ -147,3 +147,7 @@ document.querySelector('.send').addEventListener('click', function () {
   }
 
 });
+
+if (load == "y"){
+  getData();
+}

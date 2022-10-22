@@ -13,14 +13,14 @@ app = Flask(__name__)
 def index():
     y=["cr_b","ft_s"]
     ylength = len(y)
-    return render_template("background/background.html", main="index/index.html", xaxis="bloc", ylen=ylength, yaxis=y, startDate="2014/05/13", endDate="2022/09/15")
+    return render_template("background/background.html", main="index/index.html", xaxis="bloc", ylen=ylength, yaxis=y, startDate="2014/05/13", endDate="2022/09/15", load="n")
 
 @app.route("/<start>&<end>&<x>&<y>")
 def indexdata(start,end,x,y):
     y = y.replace("'","\"")
     y = json.loads(y.strip())
     ylength = len(y)
-    return render_template("background/background.html", main="index/index.html", xaxis=x, ylen=ylength, yaxis=y, startDate=start, endDate=end)
+    return render_template("background/background.html", main="index/index.html", xaxis=x, ylen=ylength, yaxis=y, startDate=start, endDate=end, load="y")
      
 
 @app.route("/test")
