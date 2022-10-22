@@ -10,7 +10,9 @@ function write_comments(data){
     for(let i=0;i<data.length;i++){
 
         daString += '<div class="comment">';
-        daString += '<div class="title">' + data[i][0] + '</div>';
+        daString += '<div class="title">';
+        daString += '<a href="' + data[i][2] + '&' + data[i][3] + '&' + data[i][4] + '&'+ JSON.stringify(data[i][5]).replaceAll("\"","'") + '">' 
+        daString += data[i][0] +'</a>'+ '</div>';
         daString += '<div class="detail_container">';
 
         daString += '<div class="description">' + data[i][1] + '</div>';
