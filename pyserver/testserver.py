@@ -4,6 +4,7 @@ import services.test as testfile
 import json
 from services.bi import getChartData
 from datetime import datetime
+from os.path import exists
 
 
 app = Flask(__name__)
@@ -30,8 +31,16 @@ def impressum():
 
 @app.route("/comments")
 def comment():
-    comments = [["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],
-["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]],["This is a comment","description","2021-01-01","2022-05-25","time",["fee","block_id"]]]
+    if exists("comments.txt"):
+        file = open("comments.txt","r")
+    else:
+        file = open("pyserver/comments.txt","r")
+    comments = []
+
+    line = file.readline()
+    while line != "":
+        comments.append(json.loads(line.strip())) 
+        line = file.readline()
 
     comments = json.dumps(comments)
     return render_template("background/background.html", main="comments/comments.html", yeay=comments)    
@@ -47,4 +56,6 @@ def testGet(startDate,endDate,xaxis,yaxis):
 
 
 if __name__ == "__main__":
+    if not exists("comments.txt") and not exists("pyserver/comments.txt"):
+        open("comments.txt", "a")
     app.run(host="localhost",port=80,debug=True)
