@@ -5,15 +5,16 @@ let chartData;
 let createChartData;
 
 
-document.querySelector('.StartDate').value = formatDate(startDate);
-document.querySelector('.EndDate').value = formatDate(endDate);
+document.querySelector('.filter--StartDate').value = formatDate(startDate);
+document.querySelector('.filter--EndDate').value = formatDate(endDate);
 
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);
   end = formatDate(endDate);
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
-  fetch(url).then((data) => {return data.json()})
+  fetch(url)
+  .then((data) => {return data.json()})
   .then((data) => processData(data));
 }
 
@@ -133,19 +134,50 @@ const displayMessage = function (message) {
 };
 
 /* EventListeners */
-document.querySelector('.send').addEventListener('click', function () {
+document.querySelector('.btn--send').addEventListener('click', function () {
 
-  let _tmp_startDate = new Date(document.querySelector('.StartDate').value);
-  let _tmp_endDate = new Date(document.querySelector('.EndDate').value);
+  let _tmp_startDate = new Date(document.querySelector('.filter--StartDate').value);
+  let _tmp_endDate = new Date(document.querySelector('.filter--EndDate').value);
 
   if(_tmp_startDate.getTime() > _tmp_endDate.getTime()) {
     displayMessage('Start date must be earlier than end date...') ;
   } else {
-    startDate = document.querySelector('.StartDate').value;
-    endDate = document.querySelector('.EndDate').value;
+    startDate = document.querySelector('.filter--StartDate').value;
+    endDate = document.querySelector('.filter--EndDate').value;
     getData();
   }
 
+});
+
+document.querySelector('.btn--add').addEventListener('click', function() {
+  
+  // available options
+  let selectoptions = ['cr_b','ft_s'] ;
+
+  // already existing select elements - number of selections for dates
+  let HTMLselects = document.getElementsByTagName("select").length ;
+
+  // only add select element if additional data can be added
+  if(HTMLselects < selectoptions.length){
+    
+    // create new element
+    let sel = document.createElement('select') ;
+    
+    // create / add new element
+    for (optitem in selectoptions){
+      let opt = document.createElement('option') ;
+      opt.value = selectoptions[optitem] ;
+      opt.innerHTML = selectoptions[optitem] ;
+      sel.appendChild(opt)
+    }
+
+    document.querySelector('.filters--series').appendChild(document.createElement('br'))
+    document.querySelector('.filters--series').appendChild(sel) ;
+    
+  } else {
+    // new element cannot be added
+    alert(`cannot add more than ${selectoptions.length} selection`)
+  }
 });
 
 if (load == "y"){
