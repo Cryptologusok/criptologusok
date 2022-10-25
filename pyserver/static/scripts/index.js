@@ -137,12 +137,15 @@ chartLine = new ApexCharts(document.querySelector("#chart-line"), optionsLine);
 chartLine.render();
 }
 
-/* custom functions */
+// custom functions ---------------------------------------------------------------------
 const displayMessage = function (message) {
   document.getElementById("data").innerHTML = message;
 };
 
-/* EventListeners */
+// EventListeners -----------------------------------------------------------------------
+
+// Send ---------------------------------------------------------------------------------
+// Function: initiate data collection with specified filters
 document.querySelector('.btn--send').addEventListener('click', function () {
 
   let _tmp_startDate = new Date(document.querySelector('.filter--StartDate').value);
@@ -158,12 +161,14 @@ document.querySelector('.btn--send').addEventListener('click', function () {
 
 });
 
+// Add ----------------------------------------------------------------------------------
+// Function: new select field for data series
 document.querySelector('.btn--add').addEventListener('click', function() {
   
   // available options
   let selectoptions = ['cr_b','ft_s'] ;
 
-  // already existing select elements - number of selections for dates
+  // already existing select elements
   let HTMLselects = document.getElementsByTagName("select").length ;
 
   // only add select element if additional data can be added
@@ -180,7 +185,7 @@ document.querySelector('.btn--add').addEventListener('click', function() {
       sel.appendChild(opt)
     }
 
-    document.querySelector('.filters--series').appendChild(document.createElement('br'))
+    //document.querySelector('.filters--series').appendChild(document.createElement('br'))
     document.querySelector('.filters--series').appendChild(sel) ;
     
   } else {
@@ -188,6 +193,15 @@ document.querySelector('.btn--add').addEventListener('click', function() {
     alert(`cannot add more than ${selectoptions.length} selection`)
   }
 });
+
+// Remove -------------------------------------------------------------------------------
+// Function: deletes last select field for data series
+document.querySelector('.btn--remove').addEventListener('click', function() {
+  
+  let selectElement = document.querySelector('.filters--series') ;
+  selectElement.removeChild(selectElement.lastChild);
+
+}) ;
 
 if (load == "y"){
   getData();
