@@ -12,6 +12,15 @@ function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);
   end = formatDate(endDate);
+
+  // query selected yaxis values and overwrite
+  let yaxisselection=[] ;
+  let selects = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  for (const select of selects){
+    yaxisselection.push(select.value) ;
+  }
+  yaxis = yaxisselection ;
+
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
   fetch(url)
   .then((data) => {return data.json()})
