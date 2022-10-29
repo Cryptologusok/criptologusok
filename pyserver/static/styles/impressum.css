@@ -46,10 +46,15 @@
     padding-top:10px;
     text-align:center;
 }
-.group li{
+.group ul li{
     list-style-type:none;
-    height:50px;
+    height:70px;
     font-size:20px;
+}
+.group ul li img{
+    position: relative;
+    top:10px;
+    right:10px;
 }
 
 a:link {
