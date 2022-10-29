@@ -1,8 +1,12 @@
+.impressum_body {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    height:85%;
+}
+
 #title {
-    margin:auto;
-    padding-top:10px;
     padding-left:20px;
-    padding-bottom:20px;
     font-size:35px;
 }
 
@@ -10,13 +14,12 @@
     font-size:25px;
     padding-left:20px;;
 }
-#project_manadger{
+#project_manager{
     font-size:30px;
-    margin:60px;
     font-weight: bold;
     text-align:center;
 }
-#project_manadger div{
+#project_manager div{
     font-weight: normal;
     height:45px;
 }
@@ -25,6 +28,7 @@
     justify-content: space-between;
     padding-right:50px;
     padding-left:50px;
+    margin-bottom:120px;
 }
 .group {
     width:350px;
@@ -67,13 +71,12 @@ a:hover{
     transition: all 0.4s ease;
 }
 
-#project_manadger a:hover{
+#project_manager a:hover{
     font-size:32px;
     transition: all 0.4s ease;
 }
 
 footer {
     font-size:20px;
-    margin-top:80px;
     margin-left:50px;
 }
