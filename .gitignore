@@ -1,5 +1,7 @@
 pyserver/services/__pycache__/*
 input_single_json.parquet
+1.parquet
+2.parquet
 .vs/*
 .vscode/*
 pyserver/__pycache__/*
