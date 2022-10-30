@@ -4,9 +4,26 @@ let chartLine;
 let chartData;
 let createChartData;
 
+allY = ['cr_b','ft_s'];
 
-document.querySelector('.filter--StartDate').value = formatDate(startDate);
-document.querySelector('.filter--EndDate').value = formatDate(endDate);
+//data initialison
+{
+  document.querySelector('.filter--StartDate').value = formatDate(startDate);
+  document.querySelector('.filter--EndDate').value = formatDate(endDate);
+  document.querySelector('.filters--series').innerHTML = '';
+  yaxis.forEach(currenty => {
+    let filter ='<select>';
+    allY.forEach(ally =>{
+      filter+='<option value='+ally+' ';
+      if(ally == currenty){
+        filter += 'selected ';
+      }
+      filter +='> '+ally+'</option>';
+    });
+    filter += '</select>';
+    document.querySelector('.filters--series').innerHTML += filter;
+  });
+}
 
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
@@ -203,6 +220,7 @@ document.querySelector('.btn--remove').addEventListener('click', function() {
 
 }) ;
 
+//if the page is loaded from comments, then load graph instantly 
 if (load == "y"){
   getData();
 }
