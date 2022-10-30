@@ -12,3 +12,37 @@
   margin-top: -40px;
 }
 */
+.container{
+  overflow: hidden;
+}
+
+.results--figures{
+  height: 100vh;
+}
+
+.index-title{
+  text-align: center;
+  font-size: larger;
+}
+.comment--title{
+  width: 100%;
+  min-height: 50px;
+  background-color: unset;
+  text-align: center;
+  color: whitesmoke;
+  font-size: large;
+}
+
+.comment--description{
+  width: 100%;
+  min-height: 200px;
+  background-color: unset;
+  color: whitesmoke;
+  font-size: large;
+}
+
+.results{
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -36,7 +36,7 @@
             /*background-color: #231651;*/
             background-image: linear-gradient(to top left, #d9480f 0%, #5f3dc4 100%);
             color: #fff;
-            height: 100vh;
+            height: 101vh;
             width: 99vw;
             overflow: hidden;
             /*border-top: 10px solid #1098ad;*/
@@ -73,12 +73,11 @@
 
         .container {
             min-height:100%;
-            min-width: 100%;
+            min-width: 100vw;
             display: flex;
             flex-direction: row ;
             align-items: stretch ; /* flex-start, flex-end, center, stretch */
             justify-content: space-between ; /* space-between, center */
-
         }
 
         .filters {
