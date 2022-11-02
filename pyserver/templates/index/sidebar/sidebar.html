@@ -14,11 +14,19 @@
         name="trip-end"
         value="2022-09-30"
         min="2010-01-01" max="2022-09-30">
-    <div class="filters--series"> data series:
+    <label for ="filters--xaxis">x-axis:</label>
+    <div class="filters--xaxis">
         <select>
+            <option value="time">time</option>
+            <!--<option value="ft_s">ft_s</option>-->
+        </select>
+    </div>
+    <label for ="filters--series">data series:</label>
+    <div class="filters--series">
+        <!--<select>
             <option value="cr_b">cr_b</option>
             <option value="ft_s">ft_s</option>
-        </select>
+        </select>-->
     </div>
     <input class="btn--add" type="button" value="Add"/>
     <input class="btn--remove" type="button" value="Remove"/>
