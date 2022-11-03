@@ -5,7 +5,7 @@ let chartData;
 let createChartData;
 
 // available values for x axis
-allX = [] ; 
+allX = ['bloc','cr_b','ft_s'] ; 
 
 // available values for y axis
 allY = ['cr_b','ft_s'] ;
@@ -15,6 +15,7 @@ allY = ['cr_b','ft_s'] ;
 {
   document.querySelector('.filter--StartDate').value = formatDate(startDate);
   document.querySelector('.filter--EndDate').value = formatDate(endDate);
+  createSelectOptions(allX,'.filters--xaxis') ;
   createSelectOptions(allY,'.filters--series') ;
 }
 
@@ -24,10 +25,18 @@ function getData(){
   start = formatDate(startDate);
   end = formatDate(endDate);
 
+  // query selected xaxis values
+  let xaxisselection=[] ;
+  let xselects = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
+  for (const select of xselects){
+    xaxisselection.push(select.value) ;
+  }
+  xaxis = xaxisselection ;
+
   // query selected yaxis values and overwrite
   let yaxisselection=[] ;
-  let selects = document.querySelector('.filters--series').getElementsByTagName('select') ;
-  for (const select of selects){
+  let yselects = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  for (const select of yselects){
     yaxisselection.push(select.value) ;
   }
   yaxis = yaxisselection ;
