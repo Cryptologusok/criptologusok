@@ -9,9 +9,9 @@
         <!-- </div> -->
     </div>
     <div class="results--figures">
-        <div class="index-title"><button class="button-save" id="save--button">MENTÉS</button> Figures</div>
-        <input class="comment--title" type="text" id="title">
-        <textarea class="comment--description" type="text"  id="description"></textarea>
+        <div class="index-title"><button onclick="saveComment()" class="button-save" id="save--button">MENTÉS</button> Figures</div>
+        <input class="comment--title" type="text" id="comment--title">
+        <textarea class="comment--description" type="text"  id="comment--description"></textarea>
     </div>
 </div>
 
@@ -29,4 +29,5 @@
         yaxis.push('{{yaxis[i]}}')
     </script>
 {%endfor%}
+
 <script src="{{ url_for('static',filename='scripts/index.js') }}"></script>

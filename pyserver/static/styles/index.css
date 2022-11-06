@@ -49,4 +49,7 @@
 
 .button-save{
   float: left;
+  height: 100%;
+  align-self: center;
+  margin-top: 2px;
 }

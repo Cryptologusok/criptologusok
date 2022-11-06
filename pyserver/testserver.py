@@ -36,6 +36,26 @@ def other():
 def impressum():
     return render_template("background/background.html", main="another/Impressum.html")
 
+@app.route("/save<data>")
+def save(data):
+    if exists("comments.txt"):
+        file = open("comments.txt","r")
+    else:
+        file = open("pyserver/comments.txt","r")
+
+    olddata = file.read()
+    file.close()
+    result =data + "\n" + olddata
+
+    if exists("comments.txt"):
+        file = open("comments.txt","w")
+    else:
+        file = open("pyserver/comments.txt","w")
+
+    file.write(result)
+    file.close()
+    return "saved"
+
 @app.route("/comments")
 def comment():
     if exists("comments.txt"):

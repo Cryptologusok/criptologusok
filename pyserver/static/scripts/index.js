@@ -25,6 +25,20 @@ allY = ['cr_b','ft_s'];
   });
 }
 
+
+function saveComment(){
+  comment=[];
+  comment.push(document.getElementById('comment--title').value);
+  comment.push(document.getElementById('comment--description').value);
+  comment.push(formatDate(startDate));
+  comment.push(formatDate(endDate));
+  comment.push(xaxis);
+  comment.push(yaxis);
+  let result = "/save"+JSON.stringify(comment);
+  fetch(result);
+  console.log(result);
+}
+
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);
