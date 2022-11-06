@@ -4,28 +4,23 @@ let chartLine;
 let chartData;
 let createChartData;
 
-allY = ['cr_b','ft_s'];
+// available values for x axis
+allX = ['bloc','cr_b','ft_s'] ; 
 
-//data initialison
+// available values for y axis
+allY = ['cr_b','ft_s'] ;
+//allY = ['cr_b','ft_s','it_s','size','inpc','outc'] ;
+
+// data initialization
 {
   document.querySelector('.filter--StartDate').value = formatDate(startDate);
   document.querySelector('.filter--EndDate').value = formatDate(endDate);
-  document.querySelector('.filters--series').innerHTML = '';
-  yaxis.forEach(currenty => {
-    let filter ='<select>';
-    allY.forEach(ally =>{
-      filter+='<option value='+ally+' ';
-      if(ally == currenty){
-        filter += 'selected ';
-      }
-      filter +='> '+ally+'</option>';
-    });
-    filter += '</select>';
-    document.querySelector('.filters--series').innerHTML += filter;
-  });
+  createSelectOptions(allX,'.filters--xaxis') ;
+  createSelectOptions(allY,'.filters--series') ;
 }
 
 
+<<<<<<< HEAD
 function saveComment(){
   comment=[];
   comment.push(document.getElementById('comment--title').value);
@@ -39,15 +34,25 @@ function saveComment(){
   console.log(result);
 }
 
+=======
+>>>>>>> 299793ec32a1fe55ac9f59686aa9ac728476bc6c
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);
   end = formatDate(endDate);
 
+  // query selected xaxis values
+  let xaxisselection=[] ;
+  let xselects = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
+  for (const select of xselects){
+    xaxisselection.push(select.value) ;
+  }
+  xaxis = xaxisselection ;
+
   // query selected yaxis values and overwrite
   let yaxisselection=[] ;
-  let selects = document.querySelector('.filters--series').getElementsByTagName('select') ;
-  for (const select of selects){
+  let yselects = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  for (const select of yselects){
     yaxisselection.push(select.value) ;
   }
   yaxis = yaxisselection ;
@@ -169,9 +174,30 @@ chartLine.render();
 }
 
 // custom functions ---------------------------------------------------------------------
+
+// display message
 const displayMessage = function (message) {
   document.getElementById("data").innerHTML = message;
 };
+
+// create filter--series select options
+function createSelectOptions(yaxis, target){
+  let selectoptions = [...yaxis] ;
+
+  // create new element
+  let sel = document.createElement('select') ;
+    
+  // load content / add new element
+  for (optitem in selectoptions){
+    let opt = document.createElement('option') ;
+    opt.value = selectoptions[optitem] ;
+    opt.innerHTML = selectoptions[optitem] ;
+    sel.appendChild(opt)
+  }
+
+  // add to filter series
+  document.querySelector(target).appendChild(sel) ;
+}
 
 // EventListeners -----------------------------------------------------------------------
 
@@ -189,39 +215,22 @@ document.querySelector('.btn--send').addEventListener('click', function () {
     endDate = document.querySelector('.filter--EndDate').value;
     getData();
   }
-
 });
 
 // Add ----------------------------------------------------------------------------------
 // Function: new select field for data series
 document.querySelector('.btn--add').addEventListener('click', function() {
-  
-  // available options
-  let selectoptions = ['cr_b','ft_s'] ;
-
   // already existing select elements
   let HTMLselects = document.getElementsByTagName("select").length ;
 
   // only add select element if additional data can be added
-  if(HTMLselects < selectoptions.length){
+  if(HTMLselects <= allY.length){
     
-    // create new element
-    let sel = document.createElement('select') ;
-    
-    // create / add new element
-    for (optitem in selectoptions){
-      let opt = document.createElement('option') ;
-      opt.value = selectoptions[optitem] ;
-      opt.innerHTML = selectoptions[optitem] ;
-      sel.appendChild(opt)
-    }
-
-    //document.querySelector('.filters--series').appendChild(document.createElement('br'))
-    document.querySelector('.filters--series').appendChild(sel) ;
+    createSelectOptions(allY, '.filters--series')
     
   } else {
     // new element cannot be added
-    alert(`cannot add more than ${selectoptions.length} selection`)
+    alert(`cannot add more than ${allY.length} selection`)
   }
 });
 
