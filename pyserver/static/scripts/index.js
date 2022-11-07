@@ -20,7 +20,6 @@ allY = ['cr_b','ft_s'] ;
 }
 
 
-<<<<<<< HEAD
 function saveComment(){
   comment=[];
   comment.push(document.getElementById('comment--title').value);
@@ -30,12 +29,16 @@ function saveComment(){
   comment.push(xaxis);
   comment.push(yaxis);
   let result = "/save"+JSON.stringify(comment);
-  fetch(result);
-  console.log(result);
+  fetch(result).then( (respond) => 
+  {
+    if(respond.statusText=="OK"){
+      document.getElementById("comment--save").innerHTML = "Sikeresen mentve!";
+    }else{
+      document.getElementById("comment--save").innerHTML = "Mentési kísérlet sikertelen!!";
+    }
+  });
 }
 
-=======
->>>>>>> 299793ec32a1fe55ac9f59686aa9ac728476bc6c
 function getData(){
   document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);

@@ -54,7 +54,7 @@ def save(data):
 
     file.write(result)
     file.close()
-    return "saved"
+    return "Sikeresen Mentve"
 
 @app.route("/comments")
 def comment():

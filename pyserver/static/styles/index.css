@@ -53,3 +53,7 @@
   align-self: center;
   margin-top: 2px;
 }
+
+.save{
+  float: right;
+}
