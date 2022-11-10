@@ -6,11 +6,11 @@ let createChartData;
 
 // available values for x axis
 //allX = ['bloc','cr_b','ft_s'] ; 
-allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc'] ;
+allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc','time','trnr'] ;
 
 // available values for y axis
 //allY = ['cr_b','ft_s'] ;
-allY = ['cr_b','ft_s','it_s','size','inpc','outc'] ;
+allY = ['cr_b','ft_s','it_s','size','inpc','outc','trnr'] ;
 
 // data initialization
 {
@@ -122,15 +122,31 @@ stroke: {
 dataLabels: {
   enabled: false
 },
-fill: {
-  opacity: 1,
-},
 markers: {
   size: 0
 },
+yaxis: {
+  labels: {
+    style: {
+      fontSize: '12px',
+      fontWeight: 400,
+      fontFamily: 'Open Sans',
+      colors: ['#FFFFFF'],
+    }
+  }
+},
 xaxis: {
+  labels: {
+  style: {
+    fontSize: '12px',
+    fontWeight: 400,
+    fontFamily: 'Open Sans',
+    colors: ['#FFFFFF'],
+  }
+  },
   data: chartData[0],
   type: 'number'
+  
 }
 };
 
@@ -166,10 +182,26 @@ xaxis: {
   type: 'number',
   tooltip: {
     enabled: true
+  },
+  labels: {
+    style: {
+      fontSize: '12px',
+      fontWeight: 400,
+      fontFamily: 'Open Sans',
+      colors: ['#FFFFFF'],
+    }
   }
 },
 yaxis: {
-  tickAmount: 2
+  tickAmount: 2,
+  labels: {
+    style: {
+      fontSize: '12px',
+      fontWeight: 400,
+      fontFamily: 'Open Sans',
+      colors: ['#FFFFFF'],
+    }
+  }
 }
 };
 

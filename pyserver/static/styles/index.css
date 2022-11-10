@@ -12,6 +12,14 @@
   margin-top: -40px;
 }
 */
+.apexcharts-tooltip{
+  color: #000000;
+}
+
+.apexcharts-text tspan{
+  color:white;
+}
+
 .container{
   overflow: hidden;
 }
