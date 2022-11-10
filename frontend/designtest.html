@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="filters">
+            <p class="title">Filters</p>
+            <div class="Date">
+                <label for="filter--StartDate">Start date:</label>
+                <input 
+                    type="date" 
+                    class="filter--StartDate" 
+                    name="trip-start"
+                    value="2010-01-01"
+                    min="2010-01-01" max="2022-09-30">
+            </div>
+            <div class="Date">
+                <label for="filter--EndDate">End date:</label>
+                <input 
+                type="date" 
+                class="filter--EndDate" 
+                name="trip-end"
+                value="2022-09-30"
+                min="2010-01-01" max="2022-09-30">
+            </div>
+            <label for ="filters--xaxis">x-axis:</label>
+            <div class="filters--xaxis">
+                <select>
+                    <option value="bloc">bloc</option>
+                </select>
+            </div>
+            <div class="series-control--header">
+                <label for ="filters--series">data series:</label>
+                <div class="btn--add-remove">
+                    <input class="btn--add" type="button" value="+"/>
+                    <input class="btn--remove" type="button" value="-"/>
+                </div>
+            </div>
+            <div class="filters--series">
+                <select>
+                    <option value="cr_b">cr_b</option>
+                </select>
+            </div>
+            <input class="btn--send" type="button" value="Send"/>
+        </div>
+        <div class="results">
+            <p class="title">Results</p>
+            <div class="results--graph">Graph
+                <div id="data">Please select start and end dates</div>
+                <!-- <div id="wrapper"> -->
+                    <div id="chart-line2"></div>
+                    <div id="chart-line"></div>
+                <!-- </div> -->
+            </div>
+            <div class="results--figures">
+                <div class="index-title"><button class="button-save" id="save--button">MENTÉS</button> Figures <span id="comment--save" class="save"></span> </div>
+                <input class="comment--title" type="text" id="comment--title">
+                <textarea class="comment--description" type="text"  id="comment--description"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
