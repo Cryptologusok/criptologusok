@@ -112,6 +112,14 @@
             margin: 0 auto;
             margin-left: 50%;
         }
+
+        .Date{
+            display: flex ;
+            flex-direction: row ;
+            flex: 0 1 auto ;
+            align-items: stretch ;
+            justify-content: space-between;
+        }
         
         .series-control--header {
             display: flex ;
