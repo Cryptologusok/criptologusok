@@ -34,7 +34,7 @@
             /*color: #444;*/
             font-family: 'Inter', sans-serif;
             /*background-color: #231651;*/
-            background-image: linear-gradient(to top left, #d9480f 0%, #5f3dc4 100%);
+            background-image: linear-gradient(to top left, #d9480f 0%, #2a0344 80%);
             color: #fff;
             height: 101vh;
             width: 99vw;
@@ -112,17 +112,47 @@
             margin: 0 auto;
             margin-left: 50%;
         }
+        
+        .series-control--header {
+            display: flex ;
+            flex-direction: row ;
+            flex: 0 1 auto ;
+            align-items: stretch ;
+            justify-content: space-between;
+            gap: 5px ;
+        }
 
-        .filters--series{
+        .btn--add-remove {
+            display: flex;
+            flex-direction: row;
+            flex: 0 1 auto ;
+            align-items: center ;
+            justify-items: space-between ;
+            gap: 5px;
+        }
+
+        .btn--add {
+            width: 2rem ;
+        }
+
+        .btn--remove {
+            width: 2rem ;
+        }
+
+        .filters--series {
+            align-self: flex-start ;
             display: flex;
             flex-direction: column ;
             align-items: flex-start ;
             gap: 2.5px ;
         }
 
-        .btn--add {
-            margin-top: 20px ;
+        .btn--send {
+            align-self: center ;
+            width: 5rem ;
+            height: 2.5rem ;
         }
+
         /*
         .btn--links:link,
         .btn--links:visited {

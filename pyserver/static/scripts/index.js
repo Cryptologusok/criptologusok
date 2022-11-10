@@ -5,11 +5,12 @@ let chartData;
 let createChartData;
 
 // available values for x axis
-allX = ['bloc','cr_b','ft_s'] ; 
+//allX = ['bloc','cr_b','ft_s'] ; 
+allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc'] ;
 
 // available values for y axis
-allY = ['cr_b','ft_s'] ;
-//allY = ['cr_b','ft_s','it_s','size','inpc','outc'] ;
+//allY = ['cr_b','ft_s'] ;
+allY = ['cr_b','ft_s','it_s','size','inpc','outc'] ;
 
 // data initialization
 {
@@ -242,7 +243,9 @@ document.querySelector('.btn--add').addEventListener('click', function() {
 document.querySelector('.btn--remove').addEventListener('click', function() {
   
   let selectElement = document.querySelector('.filters--series') ;
-  selectElement.removeChild(selectElement.lastChild);
+  if( selectElement.childElementCount > 1 ){
+    selectElement.removeChild(selectElement.lastChild);
+  }
 
 }) ;
 
