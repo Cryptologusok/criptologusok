@@ -1,9 +1,7 @@
-import imp
 import random
 import json
 from services.de import getData
 import pandas as pd
-import datetime
 
 def dummy_getChart(startDate,endDate,xaxis,yaxis):
     chartData = [[]]
@@ -42,10 +40,6 @@ def getChartData(startDate,endDate,xaxis,yaxis):
 
     # generate descriptive stats
     analytics = []
-    #stats = ['median', 'stdev']
-
-    #for s in stats:
-    #    analytics.append([]) # create placeholders
 
     i = 0 
     for y in yaxis:
@@ -53,10 +47,15 @@ def getChartData(startDate,endDate,xaxis,yaxis):
         analytics[i].append(df[y].median()) # median
         analytics[i].append(df[y].std()) # stdev
         i += 1
+
+    # generate correlation matrix
+    corrmatrix = df[yaxis].corr()
     
-    #for y in yaxis:
-    #    analytics[1].append(df[y].std()) # stdev
-    
+    listcorrmatrix = []
+
+    for row in corrmatrix.itertuples():
+        listcorrmatrix.append(list(row))
+
     # generate chart data
     chartData = [[]]
 
@@ -72,7 +71,8 @@ def getChartData(startDate,endDate,xaxis,yaxis):
     output = []
     output.append(json.dumps(chartData))
     output.append(analytics)
+    output.append(listcorrmatrix)
 
-    #print(chartData)
+    #print(json.dumps(output))
 
     return json.dumps(output)

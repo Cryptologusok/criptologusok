@@ -68,10 +68,12 @@ function getData(){
   fetch(url)
   .then((data) => { return data.json() })
   .then((data) => processData(data))
-  .then((data) => loadAnalytics(data)) ;
+  .then((data) => loadDescriptives(data)) 
+  .then((data) => loadCorrelations(data)) 
+  ;
 }
 
-function loadAnalytics(dataIn){
+function loadDescriptives(dataIn){
 
   // 2nd part is analytics
   let data = dataIn[1] ;
@@ -106,6 +108,12 @@ function loadAnalytics(dataIn){
     // add to filter series
     document.querySelector("table").appendChild(tr) ;
   }
+
+  return dataIn ;
+}
+
+function loadCorrelations(dataIn){
+  let data = dataIn[2] ;
 }
 
 function processData(dataIn){
