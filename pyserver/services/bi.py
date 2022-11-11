@@ -42,13 +42,14 @@ def getChartData(startDate,endDate,xaxis,yaxis):
 
     # generate descriptive stats
     analytics = []
-    stats = ['median', 'stdev']
+    #stats = ['median', 'stdev']
 
-    for s in stats:
-        analytics.append([]) # create placeholders
+    #for s in stats:
+    #    analytics.append([]) # create placeholders
 
     i = 0 
     for y in yaxis:
+        analytics.append([]) # create placeholders
         analytics[i].append(df[y].median()) # median
         analytics[i].append(df[y].std()) # stdev
         i += 1
