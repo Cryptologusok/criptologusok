@@ -4,6 +4,9 @@ let chartLine;
 let chartData;
 let createChartData;
 
+// available stats
+stats = ['median','stdev'] ;
+
 // available values for x axis
 //allX = ['bloc','cr_b','ft_s'] ; 
 allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc','time','trnr'] ;
@@ -63,12 +66,54 @@ function getData(){
 
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
   fetch(url)
-  .then((data) => {return data.json()})
-  .then((data) => processData(data));
+  .then((data) => { return data.json() })
+  .then((data) => processData(data))
+  .then((data) => loadAnalytics(data)) ;
 }
 
-function processData(data){
-  chartData = data;
+function loadAnalytics(dataIn){
+
+  // 2nd part is analytics
+  let data = dataIn[1] ;
+
+  // clear table
+  let analytics = document.getElementById('analytics') ;
+  while(analytics.childNodes.length > 2){
+    analytics.removeChild(analytics.lastChild);
+  }
+
+  // count of select = count of rows to be added
+  let yselection = document.querySelector('.filters--series').getElementsByTagName('select');
+
+  // create placeholders
+  for (let i=0 ; i < yselection.length; i++){
+    
+    // create new row
+    let tr = document.createElement('tr') ;
+
+    // create and load cells
+    for (let d=0 ; d < 3; d++){
+      let td = document.createElement('td') ;
+      if(d==0){
+        td.innerHTML=yselection[i].value ;
+      }
+      else {
+        td.innerHTML = data[i][d-1];
+      }
+      tr.appendChild(td) ;
+    }
+  
+    // add to filter series
+    document.querySelector("table").appendChild(tr) ;
+  }
+}
+
+function processData(dataIn){
+
+  // 1st part is chartData
+  let data = JSON.parse(dataIn[0]) ;
+
+  chartData = data ;
   document.getElementById("data").innerHTML = "Data succesfully gathered";
   createChartData=[];
 
@@ -80,6 +125,8 @@ function processData(data){
     createChartData[i-1] = {name:yaxis[i-1],data:tmpdata};
   }
   createChart();
+
+  return dataIn ;
 }
 
 function formatDate(date) {
