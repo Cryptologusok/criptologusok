@@ -103,6 +103,16 @@ function createChart(){
   if(chartLine){  
   chartLine.destroy();
   }
+  let min = chartData[1][0];
+  let max = chartData[1][0];
+
+  for(let i=1;i<chartData.length;i++){
+    let tmpmin = Math.min.apply(null, chartData[i]);
+    let tmpmax = Math.max.apply(null, chartData[i]);
+    min = min<tmpmin? min: tmpmin;
+    max = max<tmpmax? tmpmax: max;
+  }
+  let rotate = xaxis == "time"? -70:0;
 var options = {
   series: 
     createChartData
@@ -132,21 +142,27 @@ yaxis: {
       fontWeight: 400,
       fontFamily: 'Open Sans',
       colors: ['#FFFFFF'],
+    },
+    formatter: function(val) {
+      return val.toFixed(2);
     }
-  }
+  },
+  min:min,
+  max:max
 },
 xaxis: {
-  labels: {
-  style: {
-    fontSize: '12px',
-    fontWeight: 400,
-    fontFamily: 'Open Sans',
-    colors: ['#FFFFFF'],
-  }
+  labels:{
+    rotate:rotate,
+    style:{
+      fontSize: '12px',
+      fontWeight: 400,
+      fontFamily: 'Open Sans',
+      colors: '#FFFFFF'
+    }
   },
   data: chartData[0],
-  type: 'number'
-  
+  type: 'number',
+  tickAmount:20,
 }
 };
 
@@ -179,18 +195,19 @@ fill: {
   }
 },
 xaxis: {
-  type: 'number',
   tooltip: {
     enabled: true
   },
-  labels: {
-    style: {
+  labels:{
+    rotate:rotate,
+    style:{
       fontSize: '12px',
       fontWeight: 400,
       fontFamily: 'Open Sans',
-      colors: ['#FFFFFF'],
+      colors: '#FFFFFF'
     }
-  }
+  },
+  tickAmount:20
 },
 yaxis: {
   tickAmount: 2,
@@ -200,8 +217,13 @@ yaxis: {
       fontWeight: 400,
       fontFamily: 'Open Sans',
       colors: ['#FFFFFF'],
+    },
+    formatter: function(val) {
+      return val.toFixed(2);
     }
-  }
+  },
+  max:max,
+  min:min,
 }
 };
 
