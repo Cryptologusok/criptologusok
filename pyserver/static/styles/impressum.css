@@ -6,13 +6,15 @@
 }
 
 #title {
-    padding-left:20px;
+    text-align: center;
+    padding-top: 20px;
     font-size:35px;
 }
 
 #description {
+    text-align: center;
+    padding-top: 25px;
     font-size:25px;
-    padding-left:20px;;
 }
 #project_manager{
     font-size:30px;
@@ -53,7 +55,7 @@
 }
 .group ul li img{
     position: relative;
-    top:10px;
+    top:15px;
     right:10px;
 }
 
@@ -71,7 +73,7 @@ a: active {
     color:#fff;
     text-decoration:none;
 }
-a:hover{
+.group ul li:hover a{
     font-size:23px;
     transition: all 0.4s ease;
 }
