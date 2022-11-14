@@ -1,8 +1,7 @@
-import imp
 import random
 import json
 from services.de import getData
-import datetime
+import pandas as pd
 
 def dummy_getChart(startDate,endDate,xaxis,yaxis):
     chartData = [[]]
@@ -23,7 +22,41 @@ def dummy_getChart(startDate,endDate,xaxis,yaxis):
     return json.dumps(chartData)
 
 def getChartData(startDate,endDate,xaxis,yaxis):
-    data = getData( startDate.strftime("%Y-%m-%d %H:%m:%S"),endDate.strftime("%Y-%m-%d %H:%m:%S"),xaxis,yaxis)
+    data = getData( 
+        startDate.strftime("%Y-%m-%d %H:%m:%S"),
+        endDate.strftime("%Y-%m-%d %H:%m:%S"),
+        xaxis,yaxis)
+
+    # generate names for df
+    __names = []
+    __names.append('bucket')
+    __names.append(xaxis)
+    for y in yaxis:
+        __names.append(y)
+    __names.append('trnr')
+
+    # generate dataframe for descriptive stats
+    df = pd.DataFrame(data, columns=__names)
+
+    # generate descriptive stats
+    analytics = []
+
+    i = 0 
+    for y in yaxis:
+        analytics.append([]) # create placeholders
+        analytics[i].append(df[y].median()) # median
+        analytics[i].append(df[y].std()) # stdev
+        i += 1
+
+    # generate correlation matrix
+    corrmatrix = df[yaxis].corr()
+    
+    listcorrmatrix = []
+
+    for row in corrmatrix.itertuples():
+        listcorrmatrix.append(list(row))
+
+    # generate chart data
     chartData = [[]]
 
     for i in range(100):
@@ -35,4 +68,11 @@ def getChartData(startDate,endDate,xaxis,yaxis):
         for j in range(100):
             chartData[i+1].append(data[j][i+2])
 
-    return json.dumps(chartData)
+    output = []
+    output.append(json.dumps(chartData))
+    output.append(analytics)
+    output.append(listcorrmatrix)
+
+    #print(json.dumps(output))
+
+    return json.dumps(output)

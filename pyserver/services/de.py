@@ -31,8 +31,8 @@ def getData(startDate,endDate,xaxis,yaxis):
   mainQuery = " SELECT bucket," + mainQuerySelectColumns + ", AVG(trnr) AS trnr "
   mainQuery += " FROM ( " + subQuery + " )  GROUP BY bucket "
 
-  print(mainQuery)
+  #print(mainQuery)
   #execute query and return
-  #result = con.execute(mainQuery).fetchall()
   result = con.execute(mainQuery).fetchall()
+
   return (result)
