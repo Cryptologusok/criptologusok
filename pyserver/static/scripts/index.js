@@ -62,7 +62,22 @@ function getData(){
   for (const select of yselects){
     yaxisselection.push(select.value) ;
   }
-  yaxis = yaxisselection ;
+
+  let _dups = [] ;
+  let _nodups = [] ;
+  let _previndex = [] ;
+  for( let i=0; i<yaxisselection.length; i++){
+    if(_previndex.includes(yaxisselection[i])){
+      _dups.push(yaxisselection[i]) ;
+      continue ;
+    }
+    else {
+      _nodups.push(yaxisselection[i]) ;
+    }
+    _previndex.push(yaxisselection[i]);
+  }
+
+  yaxis = _nodups ;
 
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
   fetch(url)
@@ -77,15 +92,32 @@ function loadDescriptives(dataIn){
 
   // 2nd part is analytics
   let data = dataIn[1] ;
+  
+  let analytics = document.getElementById('analytics') ;
 
   // clear table
-  let analytics = document.getElementById('analytics') ;
   while(analytics.childNodes.length > 2){
     analytics.removeChild(analytics.lastChild);
   }
 
   // count of select = count of rows to be added
   let yselection = document.querySelector('.filters--series').getElementsByTagName('select');
+
+  let _dups = [] ;
+  let _nodups = [] ;
+  let _previndex = [] ;
+  for( let i=0; i<yselection.length; i++){
+    if(_previndex.includes(yselection[i].value)){
+      _dups.push(yselection[i].value) ;
+      continue ;
+    }
+    else {
+      _nodups.push(yselection[i].value) ;
+    }
+    _previndex.push(yselection[i].value);
+  }
+
+  yselection = _nodups ;
 
   // create placeholders
   for (let i=0 ; i < yselection.length; i++){
@@ -97,7 +129,7 @@ function loadDescriptives(dataIn){
     for (let d=0 ; d < 3; d++){
       let td = document.createElement('td') ;
       if(d==0){
-        td.innerHTML=yselection[i].value ;
+        td.innerHTML=yselection[i] ; //.value ; // add name in 1st column
       }
       else {
         td.innerHTML = data[i][d-1];
@@ -106,7 +138,7 @@ function loadDescriptives(dataIn){
     }
   
     // add to filter series
-    document.querySelector("table").appendChild(tr) ;
+    analytics.appendChild(tr) ;
   }
 
   return dataIn ;
@@ -114,6 +146,64 @@ function loadDescriptives(dataIn){
 
 function loadCorrelations(dataIn){
   let data = dataIn[2] ;
+
+  let correlations = document.getElementById('correlations') ;
+
+  // clear table
+  while(correlations.childNodes.length > 1){
+    correlations.removeChild(correlations.lastChild);
+  }
+
+  // count of select = count of rows to be added
+  let yselection = document.querySelector('.filters--series').getElementsByTagName('select');
+
+  let _dups = [] ;
+  let _nodups = [] ;
+  let _previndex = [] ;
+  for( let i=0; i<yselection.length; i++){
+    if(_previndex.includes(yselection[i].value)){
+      _dups.push(yselection[i].value) ;
+      continue ;
+    }
+    else {
+      _nodups.push(yselection[i].value) ;
+    }
+    _previndex.push(yselection[i].value);
+  }
+
+  yselection = _nodups ;
+
+
+  // create table header
+  let thead = document.createElement('tr') ;
+  let th = document.createElement('th') ; 
+  thead.appendChild(th) ;
+
+  for (let i=0 ; i < yselection.length; i++){
+    let th = document.createElement('th') ; 
+    th.innerHTML = yselection[i] ;
+    thead.appendChild(th) ;
+  }
+  correlations.appendChild(thead) ;
+
+  // create placeholders
+  for (let i=0 ; i < yselection.length; i++){
+
+    // create new row
+    let tr = document.createElement('tr') ;
+    
+    // create and load cells
+    for (let d=0 ; d <= yselection.length; d++){
+      let td = document.createElement('td') ;
+      td.innerHTML = data[i][d];
+      tr.appendChild(td) ;
+    }
+    
+    // add to filter series
+    correlations.appendChild(tr) ;
+  }
+
+  return dataIn ;
 }
 
 function processData(dataIn){
