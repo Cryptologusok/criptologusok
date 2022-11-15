@@ -43,7 +43,6 @@ def getChartData(startDate,endDate,xaxis,yaxis):
 
     i = 0 
     for y in yaxis:
-        print(y)
         analytics.append([]) # create placeholders
         analytics[i].append(df[y].median()) # median
         analytics[i].append(df[y].std()) # stdev #df[y].iloc[:,0]
