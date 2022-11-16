@@ -23,6 +23,30 @@ allY = ['cr_b','ft_s','it_s','size','inpc','outc','trnr'] ;
   createSelectOptions(allY,'.filters--series') ;
 }
 
+function createValueArray(HTMLcollection){
+  let outArray=[] ;
+  for (const element of HTMLcollection){
+    outArray.push(element.value) ;
+  }
+  return outArray ;
+}
+
+function deduplicate(inArray){
+  let _dups = [] ;
+  let _nodups = [] ;
+  let _previndex = [] ;
+  for( let i=0; i<inArray.length; i++){
+    if(_previndex.includes(inArray[i])){
+      _dups.push(inArray[i]) ;
+      continue ;
+    }
+    else {
+      _nodups.push(inArray[i]) ;
+    }
+    _previndex.push(inArray[i]);
+  }
+  return _nodups ;
+}
 
 function saveComment(){
   comment=[];
@@ -49,35 +73,13 @@ function getData(){
   end = formatDate(endDate);
 
   // query selected xaxis values
-  let xaxisselection=[] ;
-  let xselects = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
-  for (const select of xselects){
-    xaxisselection.push(select.value) ;
-  }
-  xaxis = xaxisselection ;
+  xaxisselection = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
+  xaxis = createValueArray(xaxisselection) ;
 
   // query selected yaxis values and overwrite
-  let yaxisselection=[] ;
-  let yselects = document.querySelector('.filters--series').getElementsByTagName('select') ;
-  for (const select of yselects){
-    yaxisselection.push(select.value) ;
-  }
-
-  let _dups = [] ;
-  let _nodups = [] ;
-  let _previndex = [] ;
-  for( let i=0; i<yaxisselection.length; i++){
-    if(_previndex.includes(yaxisselection[i])){
-      _dups.push(yaxisselection[i]) ;
-      continue ;
-    }
-    else {
-      _nodups.push(yaxisselection[i]) ;
-    }
-    _previndex.push(yaxisselection[i]);
-  }
-
-  yaxis = _nodups ;
+  let yaxisselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  yaxisselection = createValueArray(yaxisselection) ;
+  yaxis = deduplicate(yaxisselection) ;
 
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
   fetch(url)
@@ -101,23 +103,9 @@ function loadDescriptives(dataIn){
   }
 
   // count of select = count of rows to be added
-  let yselection = document.querySelector('.filters--series').getElementsByTagName('select');
-
-  let _dups = [] ;
-  let _nodups = [] ;
-  let _previndex = [] ;
-  for( let i=0; i<yselection.length; i++){
-    if(_previndex.includes(yselection[i].value)){
-      _dups.push(yselection[i].value) ;
-      continue ;
-    }
-    else {
-      _nodups.push(yselection[i].value) ;
-    }
-    _previndex.push(yselection[i].value);
-  }
-
-  yselection = _nodups ;
+  let yselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  yselection = createValueArray(yselection) ;
+  yselection = deduplicate(yselection) ;
 
   // create placeholders
   for (let i=0 ; i < yselection.length; i++){
@@ -144,6 +132,7 @@ function loadDescriptives(dataIn){
   return dataIn ;
 }
 
+
 function loadCorrelations(dataIn){
   let data = dataIn[2] ;
 
@@ -155,24 +144,9 @@ function loadCorrelations(dataIn){
   }
 
   // count of select = count of rows to be added
-  let yselection = document.querySelector('.filters--series').getElementsByTagName('select');
-
-  let _dups = [] ;
-  let _nodups = [] ;
-  let _previndex = [] ;
-  for( let i=0; i<yselection.length; i++){
-    if(_previndex.includes(yselection[i].value)){
-      _dups.push(yselection[i].value) ;
-      continue ;
-    }
-    else {
-      _nodups.push(yselection[i].value) ;
-    }
-    _previndex.push(yselection[i].value);
-  }
-
-  yselection = _nodups ;
-
+  let yselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  yselection = createValueArray(yselection) ;
+  yselection = deduplicate(yselection) ;
 
   // create table header
   let thead = document.createElement('tr') ;
@@ -205,6 +179,7 @@ function loadCorrelations(dataIn){
 
   return dataIn ;
 }
+
 
 function processData(dataIn){
 
