@@ -122,7 +122,7 @@ function loadDescriptives(dataIn){
         td.innerHTML=yselection[i] ; //.value ; // add name in 1st column
       }
       else {
-        td.innerHTML = data[i][d-1].toFixed(2);
+        td.innerHTML = data[i][d-1];
       }
       tr.appendChild(td) ;
     }
@@ -171,7 +171,7 @@ function loadCorrelations(dataIn){
     // create and load cells
     for (let d=0 ; d <= yselection.length; d++){
       let td = document.createElement('td') ;
-      td.innerHTML = data[i][d].toFixed(2);
+      td.innerHTML = data[i][d];
       tr.appendChild(td) ;
     }
     
@@ -242,7 +242,7 @@ var options = {
   chart: {
   id: 'chart2',
   type: 'line',
-  height: 400,
+  height: 350,
   toolbar: {
     autoSelected: 'pan',
     show: false
@@ -295,7 +295,7 @@ var optionsLine = {
   series: createChartData,
   chart: {
   id: 'chart1',
-  height: 300,
+  height: 200,
   type: 'area',
   brush:{
     target: 'chart2',
