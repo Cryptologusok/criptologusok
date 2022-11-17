@@ -19,8 +19,10 @@ allY = ['cr_b','ft_s','it_s','size','inpc','outc','trnr'] ;
 {
   document.querySelector('.filter--StartDate').value = formatDate(startDate);
   document.querySelector('.filter--EndDate').value = formatDate(endDate);
-  createSelectOptions(allX,'.filters--xaxis') ;
-  createSelectOptions(allY,'.filters--series') ;
+  createSelectOptions(allX,'.filters--xaxis',xaxis) ;
+  for(let element = 0;element<yaxis.length;element++ ){
+    createSelectOptions(allY,'.filters--series',yaxis[element]);
+  }
 }
 
 function createValueArray(HTMLcollection){
@@ -120,7 +122,7 @@ function loadDescriptives(dataIn){
         td.innerHTML=yselection[i] ; //.value ; // add name in 1st column
       }
       else {
-        td.innerHTML = data[i][d-1];
+        td.innerHTML = data[i][d-1].toFixed(2);
       }
       tr.appendChild(td) ;
     }
@@ -169,7 +171,7 @@ function loadCorrelations(dataIn){
     // create and load cells
     for (let d=0 ; d <= yselection.length; d++){
       let td = document.createElement('td') ;
-      td.innerHTML = data[i][d];
+      td.innerHTML = data[i][d].toFixed(2);
       tr.appendChild(td) ;
     }
     
@@ -359,9 +361,9 @@ const displayMessage = function (message) {
 };
 
 // create filter--series select options
-function createSelectOptions(yaxis, target){
+function createSelectOptions(yaxis, target,selected){
   let selectoptions = [...yaxis] ;
-
+  selected = selected? selected:selectoptions[0];
   // create new element
   let sel = document.createElement('select') ;
     
@@ -372,7 +374,8 @@ function createSelectOptions(yaxis, target){
     opt.innerHTML = selectoptions[optitem] ;
     sel.appendChild(opt)
   }
-
+  
+  sel.value = selected;
   // add to filter series
   document.querySelector(target).appendChild(sel) ;
 }
