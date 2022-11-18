@@ -4,6 +4,7 @@
 $ cd /home/lefodor/projects/cryptologusok/
 $ git clone https://github.com/Cryptologusok/criptologusok.git
 $ cd criptologusok
+$ sudo apt install python3.10-venv # install python3
 $ python3 -m venv .venv # create virtual environment folder
 $ source .venv/bin/activate # if already exist, just activate
 $ python -m pip install --upgrade pip # upgrade before install
@@ -13,7 +14,7 @@ $ python -m pip install pandas # install pandas in .venv
 $ python -m pip install pyarrow # install pyarrow in .venv
 $ python -m pip install fastparquet # install fastparquet in .venv
 # press CTRL+SHIFT+P - Python Select Interpreter --> choose .venv
-# select Run --> Add Configuration --> Python --> Flask
+# select Run --> Add Configuration --> Python --> Flask , press ESC when prompted
 
 	launch.json
 		....

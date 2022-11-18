@@ -9,20 +9,35 @@ stats = ['median','stdev'] ;
 
 // available values for x axis
 //allX = ['bloc','cr_b','ft_s'] ; 
-allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc','time','trnr'] ;
+//allX = ['bloc','cr_b','ft_s','it_s','size','inpc','outc','time','trnr'] ;
+allX = ['blockid','currency_rate_bitcoin','fee_total_satoshi','input_total_satoshi','size','input_count','output_count','time','transaction_number'] ;
+
+/* 
+    "bloc" : "blockid",
+    "time" : "time",
+    "it_s" : "input_total_satoshi",
+    "ft_s" : "fee_total_satoshi",
+    "cr_b" : "currency_rate_bitcoin",
+    "size" : "size",
+    "inpc" : "input_count",
+    "outc" : "output_count",
+    "trnr" : "transaction_number"
+*/
 
 // available values for y axis
 //allY = ['cr_b','ft_s'] ;
-allY = ['cr_b','ft_s','it_s','size','inpc','outc','trnr'] ;
+//allY = ['cr_b','ft_s','it_s','size','inpc','outc','trnr'] ;
+allY = ['currency_rate_bitcoin','fee_total_satoshi','input_total_satoshi','size','input_count','output_count','transaction_number'] ;
 
 // data initialization
 {
   document.querySelector('.filter--StartDate').value = formatDate(startDate);
   document.querySelector('.filter--EndDate').value = formatDate(endDate);
   createSelectOptions(allX,'.filters--xaxis',xaxis) ;
-  for(let element = 0;element<yaxis.length;element++ ){
-    createSelectOptions(allY,'.filters--series',yaxis[element]);
-  }
+  createSelectOptions(allY,'.filters--series') ;
+  //for(let element = 0;element<yaxis.length;element++ ){
+  //  createSelectOptions(allY,'.filters--series',yaxis[element]);
+  //}
 }
 
 function createValueArray(HTMLcollection){
@@ -75,7 +90,7 @@ function getData(){
   end = formatDate(endDate);
 
   // query selected xaxis values
-  xaxisselection = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
+  let xaxisselection = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
   xaxis = createValueArray(xaxisselection) ;
 
   // query selected yaxis values and overwrite
@@ -361,9 +376,9 @@ const displayMessage = function (message) {
 };
 
 // create filter--series select options
-function createSelectOptions(yaxis, target,selected){
+function createSelectOptions(yaxis, target, selected){
   let selectoptions = [...yaxis] ;
-  selected = selected? selected:selectoptions[0];
+  selected = selected ? selected:selectoptions[0];
   // create new element
   let sel = document.createElement('select') ;
     
@@ -376,6 +391,25 @@ function createSelectOptions(yaxis, target,selected){
   }
   
   sel.value = selected;
+  // add to filter series
+  document.querySelector(target).appendChild(sel) ;
+}
+
+// create filter--series select options
+function createSelectOptions(yaxis, target){
+  let selectoptions = [...yaxis] ;
+
+  // create new element
+  let sel = document.createElement('select') ;
+    
+  // load content / add new element
+  for (optitem in selectoptions){
+    let opt = document.createElement('option') ;
+    opt.value = selectoptions[optitem] ;
+    opt.innerHTML = selectoptions[optitem] ;
+    sel.appendChild(opt)
+  }
+
   // add to filter series
   document.querySelector(target).appendChild(sel) ;
 }
