@@ -137,7 +137,7 @@ function loadDescriptives(dataIn){
         td.innerHTML=yselection[i] ; //.value ; // add name in 1st column
       }
       else {
-        td.innerHTML = data[i][d-1];
+        td.innerHTML = data[i][d-1].toFixed(4);
       }
       tr.appendChild(td) ;
     }
@@ -186,7 +186,11 @@ function loadCorrelations(dataIn){
     // create and load cells
     for (let d=0 ; d <= yselection.length; d++){
       let td = document.createElement('td') ;
-      td.innerHTML = data[i][d];
+      if(d==0){
+        td.innerHTML = data[i][d];
+      }else{
+        td.innerHTML = data[i][d].toFixed(4);
+      }
       tr.appendChild(td) ;
     }
     
