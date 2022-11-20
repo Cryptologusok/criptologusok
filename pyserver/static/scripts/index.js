@@ -272,6 +272,11 @@ dataLabels: {
 markers: {
   size: 0
 },
+legend:{
+  labels:{
+    colors: '#FFFFFF'
+  }
+},
 yaxis: {
   labels: {
     style: {
@@ -331,6 +336,11 @@ fill: {
     opacityTo: 0.1,
   }
 },
+legend:{
+  labels:{
+    colors: '#FFFFFF'
+  }
+},
 xaxis: {
   tooltip: {
     enabled: true
@@ -344,7 +354,8 @@ xaxis: {
       colors: '#FFFFFF'
     }
   },
-  tickAmount:20
+  tickAmount:20,
+  
 },
 yaxis: {
   tickAmount: 2,
