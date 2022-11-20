@@ -1,5 +1,6 @@
-["dDADDSA","dsfsggdfgdgdgf","2014-05-13","2022-09-15",["time"],["cr_b"]]
-["Tyûha Ez egy nagyon szép graph","Egész nap ezt néztem, de még tovább szerentném nézni, van benne valami gyönyörû, ami nem akar elengedni, csodálatosnak tûnik a szememben.","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
+["asdasd","asdasdas","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
+["FT_S CR_B ingadozï¿½s","Eleinte nagyon nagy ingadozï¿½s volt a kï¿½zepï¿½re normalizï¿½lï¿½dott.","2013-06-13","2022-09-15",["ft_s"],["cr_b"]]
+["Tyï¿½ha Ez egy nagyon szï¿½p graph","Egï¿½sz nap ezt nï¿½ztem, de mï¿½g tovï¿½bb szerentnï¿½m nï¿½zni, van benne valami gyï¿½nyï¿½rï¿½, ami nem akar elengedni, csodï¿½latosnak tï¿½nik a szememben.","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
 ["asdasd","asdasdasd","2014-05-13","2022-09-15","bloc",["cr_b","ft_s"]]
 ["asdasd","asdasdasd","2014-05-13","2022-09-15","bloc",["cr_b","ft_s"]]
 ["asdasd","asdasdasd","2014-05-13","2022-09-15","bloc",["cr_b","ft_s"]]
