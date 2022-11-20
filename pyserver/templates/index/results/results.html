@@ -4,17 +4,39 @@
     <div class="results--graph">Graph
         <div id="data">Please select start and end dates</div>
         <!-- <div id="wrapper"> -->
-            <div id="chart-line2"></div>
-            <div id="chart-line"></div>
+        <div id="chart-line2"></div>
+        <div id="chart-line"></div>
         <!-- </div> -->
     </div>
-    <div class="results--figures">
-        <div class="index-title"><button onclick="saveComment()" class="button-save" id="save--button">MENTÉS</button> Figures <span id="comment--save" class="save"></span> </div>
-        <input class="comment--title" type="text" id="comment--title">
-        <textarea class="comment--description" type="text"  id="comment--description"></textarea>
-    </div>
+    
+    <table id="analytics" class="tbl">
+        <tr>
+            <th>Series</th>
+            <th>Median</th>
+            <th>Stdev</th>
+        </tr>
+    </table>
+    <table id="correlations" class="tbl">
+    </table>
+    
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- It's only for pyserver -->
 <script>
     //prepare variables so pyserver can set their value
     let xaxis = '{{xaxis}}';
@@ -25,9 +47,9 @@
 </script>
 
 {%for i in range(0, ylen)%}
-    <script>
-        yaxis.push('{{yaxis[i]}}')
-    </script>
+<script>
+    yaxis.push('{{yaxis[i]}}')
+</script>
 {%endfor%}
 
 <script src="{{ url_for('static',filename='scripts/index.js') }}"></script>

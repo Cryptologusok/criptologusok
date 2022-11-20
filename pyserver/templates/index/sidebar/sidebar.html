@@ -30,14 +30,11 @@
     </div>
     <div class="filters--series">
     </div>
-    <input class="btn--send" type="button" value="Send"/>
-    <table id="analytics" class="tbl">
-        <tr>
-          <th>Series</th>
-          <th>Median</th>
-          <th>Stdev</th>
-        </tr>
-    </table>
-    <table id="correlations" class="tbl">
-    </table>
+    <input class="btn--send" type="button" value="Send" />
+    <div class="results--figures">
+        <div class="index-title"><button onclick="saveComment()" class="button-save" id="save--button">MENTÉS</button>
+            Figures <span id="comment--save" class="save"></span> </div>
+        <input class="comment--title" type="text" id="comment--title">
+        <textarea class="comment--description" type="text" id="comment--description"></textarea>
+    </div>
 </div>

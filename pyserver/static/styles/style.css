@@ -87,6 +87,7 @@
             display: flex ;
             flex-direction: column ;
             gap: 5px ;
+            height: calc( 100vh - 95px);
         }
 
         .results {
@@ -101,11 +102,7 @@
             border-top: 2px dotted black;
             border-bottom: 2px dotted black;
             flex: 1 1 70% ;
-        }
-
-        .results--figures {
-            border: 0px ;
-            flex: 0 1 30% ;
+            max-height: 600px;
         }
 
         .title {
