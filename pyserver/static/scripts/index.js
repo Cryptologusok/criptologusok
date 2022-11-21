@@ -162,29 +162,39 @@ function loadCorrelations(dataIn){
 
   // count of select = count of rows to be added
   let yselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
+  let xyselection = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
+
   yselection = createValueArray(yselection) ;
   yselection = deduplicate(yselection) ;
+  xyselection = createValueArray(xyselection) ;
+  xyselection = deduplicate(xyselection) ;
+
+  for (let i=0; i < yselection.length; i++){
+    xyselection.push(yselection[i]) ;
+  } 
+
+  xyselection = deduplicate(xyselection) ;
 
   // create table header
   let thead = document.createElement('tr') ;
   let th = document.createElement('th') ; 
   thead.appendChild(th) ;
 
-  for (let i=0 ; i < yselection.length; i++){
+  for (let i=0 ; i < xyselection.length; i++){
     let th = document.createElement('th') ; 
-    th.innerHTML = yselection[i] ;
+    th.innerHTML = xyselection[i] ;
     thead.appendChild(th) ;
   }
   correlations.appendChild(thead) ;
 
   // create placeholders
-  for (let i=0 ; i < yselection.length; i++){
+  for (let i=0 ; i < xyselection.length; i++){
 
     // create new row
     let tr = document.createElement('tr') ;
     
     // create and load cells
-    for (let d=0 ; d <= yselection.length; d++){
+    for (let d=0 ; d <= xyselection.length; d++){
       let td = document.createElement('td') ;
       if(d==0){
         td.innerHTML = data[i][d];
