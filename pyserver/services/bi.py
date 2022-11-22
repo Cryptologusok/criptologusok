@@ -49,7 +49,7 @@ def getChartData(startDate,endDate,xaxis,yaxis):
         i += 1
 
     # generate correlation matrix
-    corrMatrixCols = yaxis
+    corrMatrixCols = yaxis.copy()
     corrMatrixCols.insert(0, xaxis)
     corrmatrix = df[corrMatrixCols].corr()
     
