@@ -167,7 +167,7 @@
         }
           
         .tbl td, .tbl th {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgb(150, 150, 150);
             padding: 8px;
         }
           
@@ -189,7 +189,7 @@
 
         .tbl td {
             color: black ;
-            background-color: rgba(245, 222, 179,0.7);
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
         table{
