@@ -34,10 +34,11 @@ allY = ['currency_rate_bitcoin','fee_total_satoshi','input_total_satoshi','size'
   document.querySelector('.filter--StartDate').value = formatDate(startDate);
   document.querySelector('.filter--EndDate').value = formatDate(endDate);
   createSelectOptions(allX,'.filters--xaxis',xaxis) ;
-  createSelectOptions(allY,'.filters--series') ;
-  //for(let element = 0;element<yaxis.length;element++ ){
-  //  createSelectOptions(allY,'.filters--series',yaxis[element]);
-  //}
+  //createSelectOptions(allY,'.filters--series') ;
+  //it is neccesery for comments to work
+  for(let element = 0;element<yaxis.length;element++ ){
+   createSelectOptions(allY,'.filters--series',yaxis[element]);
+  }
 }
 
 function createValueArray(HTMLcollection){
@@ -421,26 +422,6 @@ function createSelectOptions(yaxis, target, selected){
   // add to filter series
   document.querySelector(target).appendChild(sel) ;
 }
-
-// create filter--series select options
-function createSelectOptions(yaxis, target){
-  let selectoptions = [...yaxis] ;
-
-  // create new element
-  let sel = document.createElement('select') ;
-    
-  // load content / add new element
-  for (optitem in selectoptions){
-    let opt = document.createElement('option') ;
-    opt.value = selectoptions[optitem] ;
-    opt.innerHTML = selectoptions[optitem] ;
-    sel.appendChild(opt)
-  }
-
-  // add to filter series
-  document.querySelector(target).appendChild(sel) ;
-}
-
 // EventListeners -----------------------------------------------------------------------
 
 // Send ---------------------------------------------------------------------------------

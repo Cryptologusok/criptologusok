@@ -1,3 +1,4 @@
+["aasd","asdadsd","2014-05-13","2022-09-15",["blockid"],["currency_rate_bitcoin","fee_total_satoshi","input_total_satoshi"]]
 ["asdasd","asdasdas","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
 ["FT_S CR_B ingadoz�s","Eleinte nagyon nagy ingadoz�s volt a k�zep�re normaliz�l�dott.","2013-06-13","2022-09-15",["ft_s"],["cr_b"]]
 ["Ty�ha Ez egy nagyon sz�p graph","Eg�sz nap ezt n�ztem, de m�g tov�bb szerentn�m n�zni, van benne valami gy�ny�r�, ami nem akar elengedni, csod�latosnak t�nik a szememben.","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
