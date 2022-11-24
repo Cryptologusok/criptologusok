@@ -72,14 +72,14 @@ def comment():
     comments = json.dumps(comments)
     return render_template("background/background.html", main="comments/comments.html", yeay=comments)    
 
-@app.route("/testGet/<startDate>&<endDate>&<xaxis>&<yaxis>")
-def testGet(startDate,endDate,xaxis,yaxis):
+@app.route("/testGet/<startDate>&<endDate>&<xaxis>&<yaxis>&<normalization>")
+def testGet(startDate,endDate,xaxis,yaxis,normalization):
     yaxis = yaxis[1:-1].split(',') # convert datas
     for item in range(len(yaxis)):
         yaxis[item] = yaxis[item].strip("\"")
     startDate = datetime.strptime(startDate,"%Y-%m-%d")
     endDate = datetime.strptime(endDate,"%Y-%m-%d")
-    return getChartData(startDate,endDate,xaxis,yaxis)
+    return getChartData(startDate,endDate,xaxis,yaxis,normalization)
 
 
 if __name__ == "__main__":

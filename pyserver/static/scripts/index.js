@@ -97,8 +97,9 @@ function getData(){
   let yaxisselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
   yaxisselection = createValueArray(yaxisselection) ;
   yaxis = deduplicate(yaxisselection) ;
+  let normalisation = document.getElementById("normalization").checked;
 
-  let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis);
+  let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis)+"&"+normalisation ;
   fetch(url)
   .then((data) => { return data.json() })
   .then((data) => processData(data))
@@ -264,6 +265,7 @@ function createChart(){
     max = max<tmpmax? tmpmax: max;
   }
   let rotate = xaxis == "time"? -70:0;
+  let percnt = document.getElementById("normalization").checked? "%" : "" ;
 var options = {
   series: 
     createChartData
@@ -300,7 +302,7 @@ yaxis: {
       colors: ['#FFFFFF'],
     },
     formatter: function(val) {
-      return val.toFixed(2);
+      return val.toFixed(2)+percnt;
     }
   },
   min:min,
@@ -381,7 +383,7 @@ yaxis: {
       colors: ['#FFFFFF'],
     },
     formatter: function(val) {
-      return val.toFixed(2);
+      return val.toFixed(2)+percnt;
     }
   },
   max:max,

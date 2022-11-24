@@ -21,7 +21,7 @@ def dummy_getChart(startDate,endDate,xaxis,yaxis):
 
     return json.dumps(chartData)
 
-def getChartData(startDate,endDate,xaxis,yaxis):
+def getChartData(startDate,endDate,xaxis,yaxis,normalization):
     data = getData( 
         startDate.strftime("%Y-%m-%d %H:%m:%S"),
         endDate.strftime("%Y-%m-%d %H:%m:%S"),
@@ -58,17 +58,20 @@ def getChartData(startDate,endDate,xaxis,yaxis):
     for row in corrmatrix.itertuples():
         listcorrmatrix.append(list(row))
 
+    if normalization == "true":
+        df=(df-df.min())/(((df.max()-df.min())/100))
+    chartData = df.T.values[1:-1].tolist()
     # generate chart data
-    chartData = [[]]
+    # chartData = [[]]
 
-    for i in range(100):
-        chartData[0].append(data[i][1])
+    # for i in range(100):
+    #     chartData[0].append(data[i][1])
 
-    for i in range(len(yaxis)):
-        chartData.append([])
+    # for i in range(len(yaxis)):
+    #     chartData.append([])
 
-        for j in range(100):
-            chartData[i+1].append(data[j][i+2])
+    #     for j in range(100):
+    #         chartData[i+1].append(data[j][i+2])
 
     output = []
     output.append(json.dumps(chartData))

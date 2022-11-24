@@ -18,8 +18,11 @@
             value="2022-09-30"
             min="2010-01-01" max="2022-09-30">
     </div>
-    <label for ="filters--xaxis">x-axis:</label>
     <div class="filters--xaxis">
+    <div for ="filters--xaxis">x-axis:</div>
+    </div>
+    <div class="filetrs--normalization">
+        normalization <input type="checkbox" id="normalization"/>
     </div>
     <div class="series-control--header">
         <label for ="filters--series">data series:</label>
@@ -31,6 +34,7 @@
     <div class="filters--series">
     </div>
     <input class="btn--send" type="button" value="Send" />
+
     <div class="results--figures">
         <div class="index-title"><button onclick="saveComment()" class="button-save" id="save--button">MENTÉS</button>
             Figures <span id="comment--save" class="save"></span> </div>
