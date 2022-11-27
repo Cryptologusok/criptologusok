@@ -1,3 +1,4 @@
+["test","asd","2014-05-13","2022-09-15",["blockid"],["currency_rate_bitcoin","fee_total_satoshi"]]
 ["aasd","asdadsd","2014-05-13","2022-09-15",["blockid"],["currency_rate_bitcoin","fee_total_satoshi","input_total_satoshi"]]
 ["asdasd","asdasdas","2014-05-13","2022-09-15",["bloc"],["cr_b"]]
 ["FT_S CR_B ingadoz�s","Eleinte nagyon nagy ingadoz�s volt a k�zep�re normaliz�l�dott.","2013-06-13","2022-09-15",["ft_s"],["cr_b"]]

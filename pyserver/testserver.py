@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    y=["cr_b"]
+    y=["currency_rate_bitcoin"]
     ylength = len(y)
     return render_template("background/background.html", main="index/index.html", xaxis="time", ylen=ylength, yaxis=y, startDate="2014/05/13", endDate="2022/09/15", load="n")
 

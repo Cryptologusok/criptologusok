@@ -59,8 +59,16 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
         listcorrmatrix.append(list(row))
 
     if normalization == "true":
-        df=(df-df.min())/(((df.max()-df.min())/100))
-    chartData = df.T.values[1:-1].tolist()
+        #df=(df-df.min())/(((df.max()-df.min())/100))
+        chartData = df.T.values[1:-1].tolist()
+        for index in range(1,len(chartData)):
+            
+            minimal = min(chartData[index])
+            minmaxdif = max(chartData[index])
+            for jindex in range(len(chartData[0])):
+                chartData[index][jindex] = (chartData[index][jindex]-minimal)/((minmaxdif-minimal)/100)
+    else:
+        chartData = df.T.values[1:-1].tolist()
     # generate chart data
     # chartData = [[]]
 
