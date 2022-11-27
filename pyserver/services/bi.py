@@ -20,9 +20,9 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
 
     # generate dataframe for descriptive stats
     df = pd.DataFrame(data, columns=__names)
-    dfanalytics = df
+    dfanalytics = df.copy()
     if xaxis == 'time':
-        dfanalytics['time'].apply(lambda x: datetime.strptime(x[:x.find(".")],'%Y-%m-%d %H:%M:%S').timestamp())
+        dfanalytics['time'] = dfanalytics['time'].apply(lambda x: datetime.strptime(x[:x.find(".")],'%Y-%m-%d %H:%M:%S').timestamp())
 
     # generate descriptive stats
     analytics = []
@@ -40,7 +40,6 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
     corrmatrix = dfanalytics[corrMatrixCols].corr()
     
     listcorrmatrix = []
-    time = dfanalytics["time"].values.flatten()
 
     for row in corrmatrix.itertuples():
         listcorrmatrix.append(list(row))
