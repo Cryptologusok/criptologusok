@@ -2,24 +2,7 @@ import random
 import json
 from services.de import getData
 import pandas as pd
-
-def dummy_getChart(startDate,endDate,xaxis,yaxis):
-    chartData = [[]]
-    
-    for index in range(100):
-        chartData[0].append((index+1)*10)
-    for index in range(len(yaxis)):
-        chartData.append([])
-        number = 1 
-        for inner in range(100):
-            number += 10*random.randint(1,10)
-            number -= 10*random.randint(1,10)           
-            chartData[index+1].append(number)
-
-    
-    print(chartData)
-
-    return json.dumps(chartData)
+from datetime import datetime
 
 def getChartData(startDate,endDate,xaxis,yaxis,normalization):
     data = getData( 
@@ -37,6 +20,9 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
 
     # generate dataframe for descriptive stats
     df = pd.DataFrame(data, columns=__names)
+    dfanalytics = df
+    if xaxis == 'time':
+        dfanalytics['time'] = df['time'].apply(lambda x: datetime.strptime(x[:x.find(".")],'%Y-%m-%d %H:%M:%S').timestamp())
 
     # generate descriptive stats
     analytics = []
@@ -44,16 +30,17 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
     i = 0 
     for y in yaxis:
         analytics.append([]) # create placeholders
-        analytics[i].append(df[y].median()) # median
-        analytics[i].append(df[y].std()) # stdev #df[y].iloc[:,0]
+        analytics[i].append(dfanalytics[y].median()) # median
+        analytics[i].append(dfanalytics[y].std()) # stdev #df[y].iloc[:,0]
         i += 1
 
     # generate correlation matrix
     corrMatrixCols = yaxis.copy()
     corrMatrixCols.insert(0, xaxis)
-    corrmatrix = df[corrMatrixCols].corr()
+    corrmatrix = dfanalytics[corrMatrixCols].corr()
     
     listcorrmatrix = []
+    time = dfanalytics["time"].values.flatten()
 
     for row in corrmatrix.itertuples():
         listcorrmatrix.append(list(row))
@@ -62,7 +49,6 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
         #df=(df-df.min())/(((df.max()-df.min())/100))
         chartData = df.T.values[1:-1].tolist()
         for index in range(1,len(chartData)):
-            
             minimal = min(chartData[index])
             minmaxdif = max(chartData[index])
             for jindex in range(len(chartData[0])):
