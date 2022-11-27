@@ -22,7 +22,7 @@ def getChartData(startDate,endDate,xaxis,yaxis,normalization):
     df = pd.DataFrame(data, columns=__names)
     dfanalytics = df
     if xaxis == 'time':
-        dfanalytics['time'] = df['time'].apply(lambda x: datetime.strptime(x[:x.find(".")],'%Y-%m-%d %H:%M:%S').timestamp())
+        dfanalytics['time'].apply(lambda x: datetime.strptime(x[:x.find(".")],'%Y-%m-%d %H:%M:%S').timestamp())
 
     # generate descriptive stats
     analytics = []
