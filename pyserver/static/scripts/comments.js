@@ -8,7 +8,9 @@ function write_comments(data){
 
     let daString = "";
     for(let i=0;i<data.length;i++){
-
+        if(data[i][0]==""){
+            data[i][0]="UNSET"
+        }
         daString += '<div class="comment">';
         daString += '<div class="title">';
         daString += '<a href="' + data[i][2] + '&' + data[i][3] + '&' + data[i][4] + '&'+ JSON.stringify(data[i][5]).replaceAll("\"","'") + '">' 
