@@ -75,7 +75,14 @@ function saveComment(){
   comment.push(xaxis);
   comment.push(yaxis);
   let result = "/save"+JSON.stringify(comment);
-  fetch(result).then( (respond) => 
+  fetch("/save",{
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  }).then( (respond) => 
   {
     if(respond.statusText=="OK"){
       document.getElementById("comment--save").innerHTML = "Sikeresen mentve!";

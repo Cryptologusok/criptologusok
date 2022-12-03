@@ -11,6 +11,7 @@
     display: inline;
     text-align: left;
     overflow-y: auto;
+    word-break: break-all;
 }
 
 .variables{

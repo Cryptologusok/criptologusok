@@ -1,5 +1,5 @@
 from ctypes import sizeof
-from flask import Flask, render_template 
+from flask import Flask, render_template, request 
 import services.test as testfile
 import json
 from services.bi import getChartData
@@ -36,22 +36,25 @@ def other():
 def impressum():
     return render_template("background/background.html", main="another/Impressum.html")
 
-@app.route("/save<data>")
-def save(data):
+
+@app.route("/save",methods=['POST'])
+def save():
     if exists("comments.txt"):
         file = open("comments.txt","r")
     else:
         file = open("pyserver/comments.txt","r")
 
-    olddata = file.read()
+    result_tmp = str(request.json) + "\n"+ file.read()
+    result = result_tmp.replace("\'","\"")
+    result_tmp
+    result_tmp = result.replace("\\n"," ")
+    result = result_tmp
+    del result_tmp
     file.close()
-    result =data + "\n" + olddata
-
     if exists("comments.txt"):
         file = open("comments.txt","w")
     else:
         file = open("pyserver/comments.txt","w")
-
     file.write(result)
     file.close()
     return "Sikeresen Mentve"
