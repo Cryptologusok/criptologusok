@@ -74,7 +74,6 @@ function saveComment(){
   comment.push(formatDate(endDate));
   comment.push(xaxis);
   comment.push(yaxis);
-  let result = "/save"+JSON.stringify(comment);
   fetch("/save",{
     method: "POST",
     headers: {
@@ -93,20 +92,25 @@ function saveComment(){
 }
 
 function getData(){
-  document.getElementById("data").innerHTML  = "Start getting data";  
   start = formatDate(startDate);
   end = formatDate(endDate);
-
+  
   // query selected xaxis values
   let xaxisselection = document.querySelector('.filters--xaxis').getElementsByTagName('select') ;
   xaxis = createValueArray(xaxisselection) ;
-
+  
   // query selected yaxis values and overwrite
   let yaxisselection = document.querySelector('.filters--series').getElementsByTagName('select') ;
   yaxisselection = createValueArray(yaxisselection) ;
   yaxis = deduplicate(yaxisselection) ;
   let normalisation = document.getElementById("normalization").checked;
-
+  for(let i=0;i<yaxis.length;i++){
+    if(xaxis==yaxis[i]){
+      window.alert(xaxis+" can't be at X-axis and data series simultaneously!");
+      return;
+    }
+  }
+  document.getElementById("data").innerHTML  = "Start getting data";  
   let url = "/testGet/"+start+"&"+end+"&"+xaxis+"&"+JSON.stringify(yaxis)+"&"+normalisation ;
   fetch(url)
   .then((data) => { return data.json() })
