@@ -19,6 +19,7 @@
     outline: solid 1px pink;
     display: inline;
     text-align: left;
+    overflow-y: auto;
 }
 
 .variable{
